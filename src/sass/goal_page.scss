@@ -58,3 +58,16 @@ body {
 		}
 	}
 }
+@media only screen and (max-height: 500px) {
+	.container {
+		.top {
+			#cup{height: 60px;}
+			#type {height: 40px;}
+			#coke-ish {height: 50px;}
+		}
+		.bottom {
+			margin-top: 10px;
+			#coke-bottle {height: 325px;}
+		}
+	}
+}

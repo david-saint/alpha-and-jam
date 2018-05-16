@@ -12,6 +12,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	#fscup {
+		height: 156px;
+	}
+	#fscont { height: 75px}
 }
 
 .abs {
@@ -23,4 +27,9 @@
 	left: 20%;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+@media only screen and (max-height: 500px) {
+	.fifa-s{#fscup {height: 120px;}}
+	.fifa-s{#fscont {height:40px;}}
 }

@@ -6,10 +6,10 @@
     </div>
     <div class="sponsors">
       <p>Russia 2018 World Cup Sposnsors</p>
-      <img src="../assets/img/coke_flat.svg" alt="Coca-Cola" height="120">
+      <img src="../assets/img/coke_flat.svg" alt="Coca-Cola" id="cocacola">
     </div>
     <div class="match-stat">
-      <img src="../assets/img/ms.svg.png" height="100%" width="100%">
+      <img src="../assets/img/ms.svg.png" width="100%">
       <img src="../assets/img/coke.svg" class="ms-coke" width="101%">
       <div class="ms-cont">
         <p class="ms-matchday">Matchday {{ matchday }}</p>
@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="fifa-s">
-      <img src="../assets/img/rectangle.png" height="156px">
-      <img src="../assets/img/typo.png" height="75px">
+      <img src="../assets/img/rectangle.png" id="fscup">
+      <img src="../assets/img/typo.png" id="fscont">
     </div>
 	</div>
 </template>
@@ -60,10 +60,16 @@
   @import '../sass/app.scss';
   #localTeam, #visitorTeam {
     height: 130px;
-    width: 190px;
+    width: 205px;
     content: "";
     background-color: black;
     background-size: cover;
     background-position: center;
+  }
+  @media only screen and (max-height: 500px) {
+    #localTeam, #visitorTeam {
+      height: 85px;
+      width: 115px;
+    }
   }
 </style>

@@ -28,3 +28,16 @@ div.countdown {
 		}
 	}
 }
+@media only screen and (max-height: 500px) {
+	div.countdown {
+		width: 260px;
+		height: 90px;
+		p {
+			font-size: 10px;
+			margin: 10px 0 3px 0;
+			&#count {
+				font-size: 24px;
+			}
+		}
+	}
+}

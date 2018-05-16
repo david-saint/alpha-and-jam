@@ -13,7 +13,7 @@
 			<div class="bottom">
 				<div class="left"><img src="../assets/img/coke-bottle-copy.png" alt=""></div>
 				<div class="table">
-					<h1 class="center">GROUP A</h1>
+					<h1 class="center">{{ groupName }}</h1>
 					<hr width="100%">
 					<table>
 						<thead>
@@ -28,41 +28,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><h1>nigeria</h1></td>
-								<td class="white"><h1>5</h1></td>
+							<tr v-for="team in groupTeams">
+								<td><h1>{{ team.name }}</h1></td>
+								<td class="white"><h1>{{ team.played }}</h1></td>
 								<td><h1></h1></td>
-								<td class="white"><h1>4</h1></td>
-								<td class="white"><h1>1</h1></td>
-								<td class="white"><h1>0</h1></td>
-								<td><h1>13</h1></td>
-							</tr>
-							<tr>
-								<td><h1>Argentina</h1></td>
-								<td class="white"><h1>5</h1></td>
-								<td><h1></h1></td>
-								<td class="white"><h1>3</h1></td>
-								<td class="white"><h1>1</h1></td>
-								<td class="white"><h1>1</h1></td>
-								<td><h1>10</h1></td>
-							</tr>
-							<tr>
-								<td><h1>Croatia</h1></td>
-								<td class="white"><h1>5</h1></td>
-								<td><h1></h1></td>
-								<td class="white"><h1>2</h1></td>
-								<td class="white"><h1>2</h1></td>
-								<td class="white"><h1>1</h1></td>
-								<td><h1>8</h1></td>
-							</tr>
-							<tr>
-								<td><h1>iceland</h1></td>
-								<td class="white"><h1>5</h1></td>
-								<td><h1></h1></td>
-								<td class="white"><h1>0</h1></td>
-								<td class="white"><h1>2</h1></td>
-								<td class="white"><h1>3</h1></td>
-								<td><h1>2</h1></td>
+								<td class="white"><h1>{{ team.won }}</h1></td>
+								<td class="white"><h1>{{ team.drawn }}</h1></td>
+								<td class="white"><h1>{{ team.lost }}</h1></td>
+								<td><h1>{{ team.points }}</h1></td>
 							</tr>
 						</tbody>
 					</table>
@@ -75,7 +48,17 @@
 
 <script>
 	export default {
-
+    beforeCreate() {
+      this.$store.dispatch('getGroupInfo');
+    },
+    computed: {
+      groupName() {
+        return this.$store.getters.groupTableName
+      },
+      groupTeams() {
+        return this.$store.getters.groupTableTeams.sort((a,b) => a.position - b.position);
+      }
+    }
 	}
 </script>
 

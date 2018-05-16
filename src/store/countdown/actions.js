@@ -2,7 +2,7 @@ export default {
 	// gets the basic information needed for the countdown page
 	getCountdownInfo({ commit, rootState, dispatch}) {
 		// build the url 
-		let url = `https://soccer.sportmonks.com/api/v2.0/seasons/892?api_token=${rootState.token}&include=stages.fixtures.localTeam,stages.fixtures.visitorTeam,stages.fixtures.round`;
+		const url = `https://soccer.sportmonks.com/api/v2.0/seasons/892?api_token=${rootState.token}&include=stages.fixtures.localTeam,stages.fixtures.visitorTeam,stages.fixtures.round`;
 		// use axios to call the url endpoint
 		axios.get(url)
 			.then(response => {
@@ -46,9 +46,7 @@ export default {
 				// dispatch the countdown time function
 				dispatch('getCountdownTime', matchDate);
 			})
-			.catch(error => {
-				console.error(error);
-			});
+			.catch(error => console.error(error));
 	},
 	getCountdownTime({ commit }, matchDate) {
 		// Set the date we are counting down to

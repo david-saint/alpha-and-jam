@@ -23,8 +23,8 @@
 
 .ms-cont {
 	top: 15px;
-	left: 0;
-	width: 100%;
+	left: -9px;
+	width: 101%;
 	height: 100%;
 	display: flex;
 	position: absolute;
@@ -60,5 +60,17 @@
 			font-size: 30px;
 			padding-left: 28px;
 		}
+	}
+}
+
+@media only screen and (max-height: 500px) {
+	.ms-cont {
+		top: 8px;
+		.ms-matchday {
+			height: 35px;
+			font-size: 22px;
+		}
+		.ms-coke-team { margin-top: 30px; p {font-size: 18px;}}
+		.ms-details { font-size: 14px; }
 	}
 }
