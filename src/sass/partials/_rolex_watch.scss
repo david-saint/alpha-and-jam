@@ -33,3 +33,10 @@
 	transform: rotate(0deg);
 	transition: transform 1s linear;
 }
+
+@media only screen and (max-height: 500px) {
+	.watch {height: 250px;}
+	#hours {margin-left: 5px; height: 200px; width: 19px; img {height: 100px;}}
+	#minutes {height: 308px; width: 17px; margin-left: 4px; img {height: 154px}}
+	#seconds {height: 318px; width: 27px; img {height: 215px;}}
+}

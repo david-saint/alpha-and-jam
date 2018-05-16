@@ -52,3 +52,16 @@
 	left: 60px;
 	transform: rotate(-35deg);
 }
+
+@media only screen and (max-height: 500px) {
+	.left {
+		padding: 38px;
+		#time {font-size: 125px; margin-top: 8px;}
+		.label {font-size: 33px;}
+		p {font-size: 43px;}
+	}
+	.drink {img {height: 45px;}}
+	#right_leg, #left_leg { height: 180px; width: 60px;}
+	#right_leg {img {height: 102px;} left: -30px;}
+	#left_leg {img {height: 93px;} left: 30px;}
+}

@@ -24,11 +24,11 @@
         time: '',
         rightLeg: {
           degree: 35,
-          position: -60
+          position: (window.innerHeight > 500) ? -60 : -30
         },
         leftLeg: {
           degree: -35,
-          position: 60
+          position: (window.innerHeight > 500) ? 60 : 30
         }
       }
     },

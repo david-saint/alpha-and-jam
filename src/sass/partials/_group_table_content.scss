@@ -51,3 +51,13 @@
 
 .center {text-align: center;}
 .white {background-color: #fff; color: #f00;}
+
+@media only screen and (max-height: 500px) {
+	.content {
+		.top {padding-top: 18px; #cup {height: 60px;}#type {height: 40px;}#coke-ish {height: 50px;}}
+		.bottom {
+			.left, .right {padding-top: 50px; img {height: 313px;}}
+			.table {h1 {font-size: 16px;} table {border-spacing: 10px 0; th,td {padding: 12px; min-width: 30px;}}}
+		}
+	}
+}

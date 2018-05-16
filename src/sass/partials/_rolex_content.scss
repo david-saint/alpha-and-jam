@@ -48,3 +48,12 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+@media only screen and (max-height: 500px) {
+	.left {
+		p {font-size: 18px;}
+		.time {p {font-size: 50px;}}
+	}
+	.right {p {font-size: 18px;}}
+	#triangle {margin-right: 10px; right: -60px;}
+}

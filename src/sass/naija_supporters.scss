@@ -87,3 +87,17 @@ body {
 		}
 	}
 }
+
+@media only screen and (max-height: 500px) {
+	.items {ul {.ig_images {height: 160px; width: 160px;}}}
+	.container {
+		.content {
+			.fifa-s {padding-top: 5px;}
+			#cup {height: 50px;}
+			#type {height: 35px;}
+			#coke_bottle {height: 350px;}
+			.coke {padding: 12px 35px; p {font-size: 45px;}}
+			.cb {img {height: 40px;}}
+		}
+	}
+}
