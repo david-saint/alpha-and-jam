@@ -5,12 +5,15 @@ Vue.use(Vuex);
 
 import { countdown } from './countdown/store'
 import { groupTable } from './group_table/store'
+import { matchStat } from './match_stats/store'
 
 export const store = new Vuex.Store({
 	state: {
-		token: 'Gfv90zzwtXqD533oy4okBIXIrhMnNwU6Szie0exeR5SfyiJwFehZXZxeIX2O'
+		token: 'Gfv90zzwtXqD533oy4okBIXIrhMnNwU6Szie0exeR5SfyiJwFehZXZxeIX2O',
+		season_id: 12767, // fa cup 8275
+		time: 120000
 	},
 	modules: {
-		countdown, groupTable
+		countdown, groupTable, matchStat
 	}
 });

@@ -44,7 +44,12 @@
 
 <script>
 	export default {
-
+    mounted() {
+      let t = this.$store.getters.indexTime;
+      setTimeout(() => {
+        window.location.href = '/rolex'
+      }, t);
+    }
 	}
 </script>
 

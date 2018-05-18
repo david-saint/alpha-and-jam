@@ -1,0 +1,88 @@
+import { bus } from '../../bus'
+
+export default {
+	getMatchStat({ state, commit, rootState }) {
+		function getStat() {
+			// set the timer variable
+			let w;
+			// build the url structure
+			const url = `https://soccer.sportmonks.com/api/v2.0/livescores/now?api_token=${rootState.token}&include=localTeam,visitorTeam,stats,goals`;
+			// call the endpoint
+			axios.get(url)
+				.then(response => {
+					// defactor the response
+					const data = response.data.data;
+					// find the world cup match
+					const match = data.find(value => value.season_id === rootState.season_id);
+					// if there is no world cup match return false
+					if(!match) { commit('setMatchStatus', false); return; }
+					// if there is a world cup match return true
+					commit('setMatchStatus', true);
+					// get the local and visiting teams
+					const localteam_id = match.localteam_id, visitorteam_id = match.visitorteam_id;
+					// set the requied details needed for the local team
+					const localTeam = {
+						id: localteam_id,
+						logo: match.localTeam.data.logo_path,
+						score: match.scores.localteam_score,
+						possession: match.stats.data.find(value => value.team_id === localteam_id).possessiontime
+					}
+					// set the requied details needed for the visitor team
+					const visitorTeam = {
+						id: visitorteam_id,
+						logo: match.visitorTeam.data.logo_path,
+						score: match.scores.visitorteam_score,
+						possession: match.stats.data.find(value => value.team_id === visitorteam_id).possessiontime
+					}
+					// set dummy second and time
+					let s = match.time.second, m = match.time.minute;
+					// store the results
+					commit('setMatchStat', {one: localTeam, two: visitorTeam});
+					// if it is not half time and full time
+					if( !(match.time.status == "HT" || match.time.status == "FT") ) {
+						// change the time every second
+						w = setInterval(function () {
+							// if the second is 59 change it to 0/ else increment it
+							s = (s >= 59) ? 0 : (s + 1);
+							// if the second is greater than 59 increment the minute
+							m = (s > 59) ? (m + 1) : m;
+							// save the new time
+							commit('setMatchTime', {minute: m, second: s});
+						}, 1000);
+						return w;
+					} else {
+						commit('setMatchTime', {minute: m, second: s});
+					}
+					// if the number of goals has incremented
+					if (match.goals.length > state.goal.goals.length) {
+						// create a dummy array to store goals
+						const goals = [];
+						// loop through all the goals in the match
+						match.goals.data.foreach(value => {
+							// push object into the dummy goals array
+							goals.push({
+								score: value.player_name,
+								assist: value.player_assist_name,
+								minute: value.minute
+							})
+						});
+						commit('setMatchGoals', goals);
+						// emit event here
+						bus.$emit('goal-scored');
+					}
+				})
+				.catch(error => {
+					console.error(error);
+				});
+			// repeat this recursively every 30 seconds
+			setTimeout(function () {
+				// clear the timer
+				clearInterval(w);
+				// recursively call this function
+				getStat();
+			}, 30000);
+		}
+		//  call the function
+		getStat();
+	}
+}

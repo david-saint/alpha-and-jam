@@ -72,7 +72,9 @@ export default {
 			let time = `${days}d ${hours}:${minutes}:${seconds}`;
 			// If the countdown is finished, write some text
 			if (distance < 0) {
+				// cancel the loop
 				clearInterval(x);
+				// set the time to display expired
 				time = 'EXPIRED';
 			}
 			commit('setCountdownTime', time);

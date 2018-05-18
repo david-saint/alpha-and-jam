@@ -24,6 +24,10 @@
 	export default {
     mounted() {
       this.watchAnimation();
+      let t = this.$store.getters.indexTime;
+      setTimeout(() => {
+        window.location.href = '/johnnie'
+      }, t);
     },
     methods: {
       watchAnimation() {

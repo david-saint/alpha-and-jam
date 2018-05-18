@@ -2,36 +2,36 @@
 	<div>
     <!-- The Time -->
     <center>
-      <div class="timebox">8</div>
-      <div class="timebox">5</div>
+      <div class="timebox">{{ minutes[0] }}</div>
+      <div class="timebox">{{ minutes[1] }}</div>
       <div class="separator">:</div>
-      <div class="timebox">1</div>
-      <div class="timebox">7</div>
+      <div class="timebox">{{ seconds[0] }}</div>
+      <div class="timebox">{{ seconds[1] }}</div>
     </center>
 
     <center>
       <div class="container">
         <div>
-          <img src="../assets/svg/nga.svg" class="country">
+          <img :src="firstTeam.logo" class="country">
         </div>
         <div class="grid-container">
-          <div class="grid-item home">1</div>
-          <div class="grid-item goal">
+          <div class="grid-item home">{{ firstTeam.score }}</div>
+          <div class="grid-item goal tesco">
             <img src="../assets/svg/goal.svg" class="goal" alt="Goal Post">
           </div>
-          <div class="grid-item away away">0</div>
+          <div class="grid-item away away">{{ secondTeam.score }}</div>
           <div class="grid-item possession">
-            <strong class="possession">45%</strong>
+            <strong class="possession">{{ firstTeam.possession }}%</strong>
           </div>
-          <div class="grid-item">
+          <div class="grid-item asda">
             <img src="../assets/svg/p.svg" class="players">
           </div>
           <div class="grid-item possession">
-            <strong class="possession">55%</strong>
+            <strong class="possession">{{ secondTeam.possession }}%</strong>
           </div>
         </div>
         <div>
-          <img src="../assets/svg/arg.svg" class="country">
+          <img :src="secondTeam.logo" class="country">
         </div>
       </div>
     </center>
@@ -49,8 +49,60 @@
 </template>
 
 <script>
-	export default {
+  import { bus } from '../bus'
 
+	export default {
+    data() {
+      return {
+        minute: '',
+        second: ''
+      }
+    },
+
+    beforeCreate() {
+      this.$store.dispatch('getMatchStat');
+    },
+
+    mounted() {
+      let t = this.$store.getters.indexTime;
+      setTimeout(() => {
+        window.location.href = '/naija'
+      }, t);
+      // listen for the goal-scored event
+      bus.$on('goal-scored', () => {
+        // get all goals
+        let goals = this.$store.getters.matchGoals;
+        // get the count of the goals
+        let count = this.$store.getters.matchGoalsCount;
+        // get the score 
+        let score = goals[count].score;
+        // get the assist
+        let assist = goals[count].assist;
+        // get the time
+        let time = goals[count].minute;
+        // increment the goal count
+        this.$store.commit('setMatchGoalsCount', (count+1));
+        // redirect to the goal page
+        window.location.href = `/goal/${score}/${assist}/${time}`;
+      });
+    },
+
+    computed: {
+      firstTeam() {
+        return this.$store.getters.matchFirstTeam
+      },
+      secondTeam() {
+        return this.$store.getters.matchSecondTeam
+      },
+      minutes() {
+        let m = (this.$store.getters.matchTime.minute) ? ((this.$store.getters.matchTime.minute < 10) ? '0' + this.$store.getters.matchTime.minute.toString() : this.$store.getters.matchTime.minute.toString()) : '00' ;
+        return [...m]
+      },
+      seconds() {
+        let s = (this.$store.getters.matchTime.second) ? ((this.$store.getters.matchTime.second < 10 ) ? '0' + this.$store.getters.matchTime.second.toString() : this.$store.getters.matchTime.second.toString()) : '00';
+        return ([...s]);
+      }
+    },
 	}
 </script>
 
@@ -58,7 +110,7 @@
 	body {
     background-image: url('../assets/img/bg.png');
     background-color: #ED2F23;
-    margin-top: -15;
+    margin-top: -10px;
   }
 
   .russia {
@@ -90,20 +142,18 @@
     display: inline-block;
     position: relative;
     text-align: center;
-    top: -24px;
     color: #EB2F23;
-    font-family: Montserrat;
-    font-style: medium;
+    font-family: 'Montserrat';
+    font-style: normal;
     font-weight: 500;
-    font-size: 120.096px;
-    letter-spacing: 100px;
-    border-radius: 4%;
+    font-size: 100px;
+    letter-spacing: 0px;
+    border-radius: 10%;
   }
 
   .separator {
     color: #ffffff;
     display: inline-block;
-    top: -30;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -142,7 +192,11 @@
     width: 150px;
     height: 150px;
   }
-
+  
+  .tesco {
+    border-bottom: 1px solid #fff;
+  }
+  
   .players {
     width: 150px;
     height: 150px;
@@ -154,6 +208,7 @@
     font-size: 110px;
     letter-spacing: 35.7442px;
     color: #FFFFFF;
+    border-bottom: 1px solid #fff;
   }
 
   .away {
@@ -161,6 +216,7 @@
     font-size: 110px;
     letter-spacing: 35.7442px;
     color: #FFFFFF;
+    border-bottom: 1px solid #fff;
   }
 
   .possession {
@@ -178,12 +234,16 @@
     display: flex;
     justify-content: space-around;
     position: fixed;
-    top: -200;
+    top: -200px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 200px;
     height: 100px;
     margin: auto;
+  }
+  @media only screen and (max-height: 500px) {
+    .timebox {width: 50px; height: 65px; padding: 3px; font-size: 50px;}
+    .separator {line-height: 0px; font-size: 60px;}
   }
 </style>

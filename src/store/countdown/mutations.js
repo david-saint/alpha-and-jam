@@ -1,4 +1,5 @@
 export default {
+	// set the count down information
 	setCountdownState(state, object) {
 		state.matchday = object.matchday;
 		state.date_time.date = object.date_time.date;
@@ -10,6 +11,7 @@ export default {
 		state.visitorTeam.shortName = object.visitorTeam.shortName;
 		state.visitorTeam.flag = object.visitorTeam.flag;
 	},
+	// set the countdown time
 	setCountdownTime(state, time) {
 		state.time = time
 	}

@@ -33,7 +33,11 @@
       }
     },
     mounted() {
-      this.digitalTime()
+      this.digitalTime();
+      let t = this.$store.getters.indexTime;
+      setTimeout(() => {
+        window.location.href = '/'
+      }, t);
     },
     methods: {
       digitalTime() {

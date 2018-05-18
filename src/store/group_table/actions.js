@@ -20,6 +20,7 @@ export default {
 				const groupTeams = new Array();
 				// loop through the teams in the group
 				for (let team of group.standings.data) {
+					// push the necessary data into the dummy teams array
 					groupTeams.push({
 						name: team.team_name,
 						played: team.overall.games_played,
