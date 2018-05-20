@@ -27,9 +27,11 @@
   body {
     overflow: hidden;
     margin: 0;
+    height: 100vh;
   }
   .container {
     display: flex;
+    height: 100vh;
   }
 
   .logo {
@@ -45,7 +47,11 @@
 
   .bail {
     right: 0;
+    height: 100vh;
     overflow: hidden;
     position: absolute;
   }
+
+  .bride img {height: 100%;}
+  .bail img {height: 100%;}
 </style>
