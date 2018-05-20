@@ -50,6 +50,7 @@
 
 <script>
   import { bus } from '../bus'
+  import { router } from '../routes/router'
 
 	export default {
     data() {
@@ -75,15 +76,13 @@
         // get the count of the goals
         let count = this.$store.getters.matchGoalsCount;
         // get the score 
-        let score = goals[count].score;
+        let score = goals[goals.length - 1].score;
         // get the assist
-        let assist = goals[count].assist;
+        let assist = goals[goals.length - 1].assist;
         // get the time
-        let time = goals[count].minute;
-        // increment the goal count
-        this.$store.commit('setMatchGoalsCount', (count+1));
+        let time = goals[goals.length -1].minute;
         // redirect to the goal page
-        window.location.href = `/goal/${score}/${assist}/${time}`;
+       window.location.href = `/goal/${score}/${assist}/${time}`;
       });
     },
 
@@ -200,7 +199,7 @@
   .players {
     width: 150px;
     height: 150px;
-    margin-top: -50;
+    margin-top: -35px;
   }
 
   .home {

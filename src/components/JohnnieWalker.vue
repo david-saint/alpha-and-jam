@@ -36,7 +36,7 @@
       this.digitalTime();
       let t = this.$store.getters.indexTime;
       setTimeout(() => {
-        window.location.href = '/'
+        window.location.href = '/brides'
       }, t);
     },
     methods: {

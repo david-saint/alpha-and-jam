@@ -2,6 +2,7 @@ import RolexWatch from '../components/RolexWatch.vue'
 import GoalScored from '../components/GoalScored.vue'
 import GroupTable from '../components/GroupTable.vue'
 import JohnnieWalker from '../components/JohnnieWalker.vue'
+import BridalWedding from '../components/BridalWedding.vue'
 import GoalHighlights from '../components/GoalHighlights.vue'
 import MatchCountdown from '../components/MatchCountdown.vue'
 import MatchPossession from '../components/MatchPossession.vue'
@@ -46,5 +47,9 @@ export const routes = [
 	{
 		path: '/highlight',
 		component: GoalHighlights
+	},
+	{
+		path: '/brides',
+		component: BridalWedding
 	}
 ]

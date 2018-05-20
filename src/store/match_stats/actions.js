@@ -38,6 +38,28 @@ export default {
 					let s = match.time.second, m = match.time.minute;
 					// store the results
 					commit('setMatchStat', {one: localTeam, two: visitorTeam});
+					// create a dummy array to store goals
+					const goals = [];
+					// loop through all the goals in the match
+					match.goals.data.forEach(value => {
+						// push object into the dummy goals array
+						goals.push({
+							score: value.player_name,
+							assist: value.player_assist_name,
+							minute: value.minute
+						})
+					});
+					// store the number of goals
+					commit('setMatchGoals', goals);
+					commit('setMatchGoalsCount', goals.length);
+					// determine fresh goal
+					const freshGoal = match.goals.data.filter(value => (m - value.minute) <= 2);
+					// if the number of goals has incremented
+					if (freshGoal.length) {
+						// emit event here
+						bus.$emit('goal-scored');
+					}
+					console.log(freshGoal);
 					// if it is not half time and full time
 					if( !(match.time.status == "HT" || match.time.status == "FT") ) {
 						// change the time every second
@@ -52,23 +74,6 @@ export default {
 						return w;
 					} else {
 						commit('setMatchTime', {minute: m, second: s});
-					}
-					// if the number of goals has incremented
-					if (match.goals.length > state.goal.goals.length) {
-						// create a dummy array to store goals
-						const goals = [];
-						// loop through all the goals in the match
-						match.goals.data.foreach(value => {
-							// push object into the dummy goals array
-							goals.push({
-								score: value.player_name,
-								assist: value.player_assist_name,
-								minute: value.minute
-							})
-						});
-						commit('setMatchGoals', goals);
-						// emit event here
-						bus.$emit('goal-scored');
 					}
 				})
 				.catch(error => {

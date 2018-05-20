@@ -3,7 +3,7 @@
   	<div class="container">
       <div class="vid-container">
         <div class="vid">
-          <img src="../assets/img/goal.jpg" alt="" width="100%" height="100%">
+          <embed src="https://cc.sporttube.com/embed/WxhCCCG" height="100%" width="100% ">
         </div>
       </div>
       <div class="static-side">

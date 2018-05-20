@@ -10,8 +10,8 @@ import { matchStat } from './match_stats/store'
 export const store = new Vuex.Store({
 	state: {
 		token: 'Gfv90zzwtXqD533oy4okBIXIrhMnNwU6Szie0exeR5SfyiJwFehZXZxeIX2O',
-		season_id: 12767, // fa cup 8275
-		time: 120000
+		season_id: 11759, // 12767
+		time: 1200000
 	},
 	modules: {
 		countdown, groupTable, matchStat
