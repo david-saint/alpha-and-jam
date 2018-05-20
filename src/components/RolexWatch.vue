@@ -13,7 +13,7 @@
     <div class="watch">
       <div>
         <div id="hours"><img src="../assets/img/hour.png" alt=""></div>
-        <div id="minutes"><img src="../assets/img/Minute.png" alt=""></div>
+        <div id="minutes"><img src="../assets/img/minute.png" alt=""></div>
         <div id="seconds"><img src="../assets/img/second.png" alt=""></div>
       </div>
     </div>
