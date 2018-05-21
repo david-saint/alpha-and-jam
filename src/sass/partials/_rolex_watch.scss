@@ -40,3 +40,10 @@
 	#minutes {height: 308px; width: 17px; margin-left: 4px; img {height: 154px}}
 	#seconds {height: 318px; width: 27px; img {height: 215px;}}
 }
+
+@media only screen and (min-height: 965px) and (min-width: 1280px) {
+	.watch {
+		top: 17%;
+		left: 65%;
+	}
+}

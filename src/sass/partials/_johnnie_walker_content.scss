@@ -65,3 +65,10 @@
 	#right_leg {img {height: 102px;} left: -30px;}
 	#left_leg {img {height: 93px;} left: 30px;}
 }
+
+@media only screen and (min-height: 965px) and (min-width: 1280px) {
+	.walking {
+		top: 38%;
+		left: 72%;
+	}
+}

@@ -29,6 +29,13 @@
   }
 }
 
+@media only screen and (min-height: 985px) and (min-width: 1280px) {
+  .t {span {font-size: 170px;}}
+  .b {
+    p {margin: 10px 0; font-size: 66px; #ball {height: 74px; margin: -14px 10px;} span {font-size: 46px;}}
+  }
+}
+
 .g {
 	transform: rotate(-18deg); 
 	text-shadow: 10px 25px 0 rgba(0,0,0,0.34);

@@ -43,7 +43,7 @@
     mounted() {
       setTimeout(() => {
         window.location.href = '/possession'// or naija-supporters
-      }, 20000);
+      }, 120000);
     }
 	}
 </script>

@@ -38,3 +38,10 @@
 		padding-bottom: 10px;
 	}
 }
+
+@media only screen and (min-height: 965px) and (min-width: 1280px) {
+	.static-side {
+		p.cocacola {font-size: 65px;}
+		p.gotd {font-size: 100px; padding-top: 20px}
+	}
+}

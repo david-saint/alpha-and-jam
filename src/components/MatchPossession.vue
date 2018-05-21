@@ -244,5 +244,10 @@
   @media only screen and (max-height: 500px) {
     .timebox {width: 50px; height: 65px; padding: 3px; font-size: 50px;}
     .separator {line-height: 0px; font-size: 60px;}
+    .country {width: 170px; height: 170px;}
+    .home { font-size: 65px; }
+    .away { font-size: 65px; }
+    .goal {height: 75px; width: 75px;}
+    .possession { font-size: 40px; }
   }
 </style>
