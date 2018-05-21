@@ -29,7 +29,10 @@
     mounted() {
       let t = this.$store.getters.indexTime;
       setTimeout(() => {
-        window.location.href = '/possession'// or naija-supporters
+        if (this.$store.getters.matchStatus) {
+          window.location.href = '/possession'// or naija-supporters    
+        }
+        window.location.href = '/naija'
       }, t);
     }
 	}

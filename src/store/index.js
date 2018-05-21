@@ -4,8 +4,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 import { countdown } from './countdown/store'
-import { groupTable } from './group_table/store'
 import { matchStat } from './match_stats/store'
+import { groupTable } from './group_table/store'
+// import { naijaSupporters } from './naija_supporters/store'
 
 export const store = new Vuex.Store({
 	state: {
