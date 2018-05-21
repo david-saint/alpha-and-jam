@@ -45,3 +45,7 @@
 		p.gotd {font-size: 100px; padding-top: 20px}
 	}
 }
+@media only screen and (max-height: 500px) {
+	.static-side { p.cocacola {font-size: 43px; } p.gotd {font-size: 75px;} }
+
+}

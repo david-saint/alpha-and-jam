@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
 	state: {
 		token: 'Gfv90zzwtXqD533oy4okBIXIrhMnNwU6Szie0exeR5SfyiJwFehZXZxeIX2O',
 		season_id: 892, // 12767
-		time: 120000
+		time: 45000
 	},
 	modules: {
 		countdown, groupTable, matchStat

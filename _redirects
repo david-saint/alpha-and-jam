@@ -1,1 +1,4 @@
 /*    /index.html   200
+
+# Redirect default Netlify subdomain to primary domain
+https://eager-shockley-4a25dd.netlify.com/* https://www.torussiawithcoke.ml/:splat 301!
