@@ -52,16 +52,17 @@ export default {
 					// store the number of goals
 					commit('setMatchGoals', goals);
 					commit('setMatchGoalsCount', goals.length);
-					// determine fresh goal
-					const freshGoal = match.goals.data.filter(value => (m - value.minute) <= 2);
-					// if the number of goals has incremented
-					if (freshGoal.length) {
-						// emit event here
-						bus.$emit('goal-scored');
-					}
-					console.log(freshGoal);
 					// if it is not half time and full time
 					if( !(match.time.status == "HT" || match.time.status == "FT") ) {
+						// determine fresh goal
+						const freshGoal = match.goals.data.find(value => (m - value.minute) <= 2);
+						// if the number of goals has incremented
+						if (freshGoal) {
+							// emit event here
+							bus.$emit('goal-scored', freshGoal);
+							// log it for me to view
+						}
+						console.log(freshGoal);
 						// change the time every second
 						w = setInterval(function () {
 							// if the second is 59 change it to 0/ else increment it

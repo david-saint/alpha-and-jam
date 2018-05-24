@@ -69,10 +69,6 @@
       this.$store.dispatch('getCountdownInfo');
     },
     mounted() {
-      let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        window.location.href = '/group'
-      }, t);
     }
   }
 </script>

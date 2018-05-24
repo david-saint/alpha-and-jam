@@ -54,10 +54,6 @@
       this.$store.dispatch('getGroupInfo');
     },
     mounted() {
-    	let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        window.location.href = '/highlight'
-      }, t);
     },
     computed: {
       groupName() {

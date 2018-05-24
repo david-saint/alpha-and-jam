@@ -17,25 +17,14 @@
 		<div class="left">
 			<div class="items">
 				<ul>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
+					<li v-for="image in leftImages"><img :src="image" alt="" class="ig_images"></li>
 				</ul>
 			</div>
 		</div>
 		<div class="right">
 			<div class="items">
 				<ul>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
-					<li><img src="https://scontent-mia3-2.cdninstagram.com/vp/8aed6a1ac5fea338ed51206f5f3ec31d/5B8A38BF/t51.2885-15/e35/29740498_777293379132503_951007906541600768_n.jpg" alt="" class="ig_images"></li>
+					<li v-for="image in rightImages"><img :src="image" alt="" class="ig_images"></li>
 				</ul>
 			</div>
 		</div>
@@ -43,14 +32,20 @@
 </template>
 
 <script>
-	export default {
-    mounted() {
-      let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        window.location.href = '/rolex'
-      }, t);
+export default {
+  beforeCreate() {
+    this.$store.dispatch('getSupportersImages');
+  },
+  mounted() {},
+  computed: {
+    leftImages() {
+      return this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 0);
+    },
+    rightImages() {
+      return this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 1);
     }
-	}
+  }
+}
 </script>
 
 <style lang="scss">

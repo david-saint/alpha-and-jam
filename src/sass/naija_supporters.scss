@@ -81,9 +81,11 @@ body {
 		margin: 0;
 		padding: 0;
 
-		.ig_images {
-			height: 320px;
+		li {
+			// height: 320px;
 			width: 320px;
+			margin-bottom: -4px;
+			.ig_images {width: 100%;}
 		}
 	}
 }

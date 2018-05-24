@@ -27,13 +27,6 @@
 <script>
 	export default {
     mounted() {
-      let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        if (this.$store.getters.matchStatus) {
-          window.location.href = '/possession'// or naija-supporters    
-        }
-        window.location.href = '/naija'
-      }, t);
     }
 	}
 </script>

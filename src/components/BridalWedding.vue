@@ -13,14 +13,16 @@
 </template>
 
 <script>
-	export default {
-    mounted() {
-      let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        window.location.href = '/'
-      }, t);
+export default {
+  beforeCreate() {
+    this.$store.dispatch('getBrideImage');
+  },
+  computed: {
+    image() {
+      return this.$store.getters.brideImage;
     }
-	}
+  }
+}
 </script>
 
 <style>

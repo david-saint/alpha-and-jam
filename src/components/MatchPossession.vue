@@ -65,22 +65,16 @@
     },
 
     mounted() {
-      let t = this.$store.getters.indexTime;
-      setTimeout(() => {
-        window.location.href = '/naija'
-      }, t);
       // listen for the goal-scored event
-      bus.$on('goal-scored', () => {
-        // get all goals
-        let goals = this.$store.getters.matchGoals;
+      bus.$on('goal-scored', (goals) => {
         // get the count of the goals
         let count = this.$store.getters.matchGoalsCount;
         // get the score 
-        let score = goals[goals.length - 1].score;
+        let score = goals.player_name;
         // get the assist
-        let assist = goals[goals.length - 1].assist;
+        let assist = goals.player_assist_name;
         // get the time
-        let time = goals[goals.length -1].minute;
+        let time = goals.minute;
         // redirect to the goal page
        window.location.href = `/goal/${score}/${assist}/${time}`;
       });
