@@ -55,7 +55,7 @@ export default {
 					// if it is not half time and full time
 					if( !(match.time.status == "HT" || match.time.status == "FT") ) {
 						// determine fresh goal
-						const freshGoal = match.goals.data.find(value => (m - value.minute) <= 2);
+						const freshGoal = match.goals.data.find(value => (m - value.minute) < 2);
 						// if the number of goals has incremented
 						if (freshGoal) {
 							// emit event here
