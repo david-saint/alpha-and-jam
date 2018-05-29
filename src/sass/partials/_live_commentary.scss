@@ -2,4 +2,59 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
+
+	.top { 
+		width: 350px;
+		position: relative;
+		p {
+			top: 0;
+			height: 100%;
+			width: 100%;
+			color: red;
+			margin: 0;
+			text-align: center;
+			font-family: 'Montserrat';
+			font-weight: 800;
+			font-size: 85px;
+			padding-top: 3px;
+			letter-spacing: 5px;
+			position: absolute;
+
+		}
+	}
+	.bottom { width: 650px; margin-bottom:-12px; }
+	.center {
+		width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		.t {
+			width: 70%;
+			height: 60px;
+			background-color: red;
+			text-align: center;
+			z-index: 2;
+			top:0;
+			left:0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			position: absolute;
+			font-family:'Helvetica Neue LT W01_97 BlkCn';
+			font-size: 45px;
+			text-transform: uppercase;
+			padding: 13px 0 8px 0;
+			box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+		}
+		.b {
+			margin-top: 30px;
+			height: 175px;
+			width: 100%;
+			border-radius: 15px;
+			background-color: white;
+			z-index: 0;
+			box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+		}
+	}
 }
