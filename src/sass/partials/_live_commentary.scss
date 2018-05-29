@@ -23,7 +23,36 @@
 
 		}
 	}
-	.bottom { width: 650px; margin-bottom:-12px; }
+	.bottom {
+		width: 650px;
+		margin-bottom: -12px;
+		position: relative;
+		.score {
+			top: 0;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			vertical-align: middle;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			p { 
+				color: red;
+				font-family: 'Montserrat';
+				font-size: 85px;
+				font-weight: 800;
+				letter-spacing: 5px;
+			}
+			.circle {
+				height: 100px;
+				width: 100px;
+				border-radius: 50px;
+				background-color: red;
+				overflow: hidden;
+			}
+		}
+	}
 	.center {
 		width: 1200px;
 		margin-left: auto;
@@ -48,13 +77,68 @@
 			box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
 		}
 		.b {
-			margin-top: 30px;
-			height: 175px;
+			z-index: 0;
 			width: 100%;
+			height: 175px;
+			margin-top: 30px;
+			position: relative;
 			border-radius: 15px;
 			background-color: white;
-			z-index: 0;
 			box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+			div {
+				bottom: 0;
+				margin: 0;
+				color: red;
+				width: 100%;
+				height: 60%;
+				position: absolute;
+				.time { 
+					width: 15%;
+					font-family: 'Montserrat';
+					font-weight: 800;
+					text-align: center;
+					font-size: 45px;
+				}
+				p {
+					margin: 0;
+					width: 70%;
+					height: 100%;
+					display: inline-block;
+					position: relative;
+					vertical-align: middle;
+					font-family: 'Montserrat';
+					font-weight: 600;
+					font-size: 32px;
+				}
+			}
 		}
+	}
+}
+.left {
+	position: relative;
+	.image {
+		position: absolute;
+		top: 30px;
+		left: 30px;
+		height: 150px;
+		width: 150px;
+		border-radius: 110px;
+		overflow: hidden;
+		background-color: rgba(255, 255, 255, 0.15);
+		border: 30px solid rgba(255, 255, 255, 0.10);
+	}
+}
+.right {
+	position: relative;
+	.image {
+		position: absolute;
+		top: 30px;
+		right: 30px;
+		height: 150px;
+		width: 150px;
+		border-radius: 110px;
+		overflow: hidden;
+		background-color: rgba(255, 255, 255, 0.15);
+		border: 30px solid rgba(255, 255, 255, 0.10);
 	}
 }
