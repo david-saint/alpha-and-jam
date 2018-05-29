@@ -5,6 +5,7 @@ import JohnnieWalker from '../components/JohnnieWalker.vue'
 import BridalWedding from '../components/BridalWedding.vue'
 import GoalHighlights from '../components/GoalHighlights.vue'
 import MatchCountdown from '../components/MatchCountdown.vue'
+import LiveCommentary from '../components/LiveCommentary.vue'
 import MatchPossession from '../components/MatchPossession.vue'
 import NaijaSupporters from '../components/NaijaSupporters.vue'
 
@@ -51,5 +52,9 @@ export const routes = [
 	{
 		path: '/brides',
 		component: BridalWedding
+	},
+	{
+		path: '/commentary',
+		component: LiveCommentary
 	}
 ]
