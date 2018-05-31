@@ -24,16 +24,16 @@
       <div class="bottom">
         <img src="../assets/img/xea.svg" width="100%">
         <div class="score">
-          <img src="" class="circle">
+          <img src="../assets/img/18702.png" class="circle">
           <p>0 - 0</p>
-          <img src="" class="circle">
+          <img src="../assets/img/18562.png" class="circle">
         </div>
       </div>
     </div>
     <div class="right">
       <img src="../assets/img/right-bottle.png" height="100%">
       <div class="image">
-        <img src="../assets/img/18702.png" height="100%">
+        <img src="../assets/img/18562.png" height="100%">
       </div>
     </div>
   </div>
