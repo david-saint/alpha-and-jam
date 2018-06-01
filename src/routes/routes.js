@@ -8,6 +8,7 @@ import MatchCountdown from '../components/MatchCountdown.vue'
 import LiveCommentary from '../components/LiveCommentary.vue'
 import MatchPossession from '../components/MatchPossession.vue'
 import NaijaSupporters from '../components/NaijaSupporters.vue'
+import PenaltyShootOut from '../components/PenaltyShootOut.vue'
 
 export const routes = [
 	{
@@ -56,5 +57,9 @@ export const routes = [
 	{
 		path: '/commentary',
 		component: LiveCommentary
+	},
+	{
+		path: '/penalty',
+		component: PenaltyShootOut
 	}
 ]
