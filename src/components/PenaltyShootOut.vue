@@ -8,7 +8,7 @@
     </div>
     <div class="content">
       <div class="top">
-        <img src="../assets/img/russia.svg" alt="">
+        <img src="../assets/img/russia.png" alt="">
       </div>
       <p class="pk-t">Penalty shoot-out</p>
 
@@ -36,7 +36,7 @@
       </div>
   
       <div class="bottom">
-        <img src="../assets/img/sponsors.svg" alt="">
+        <img src="../assets/img/sponsors.png" alt="">
       </div>
     </div>
     <div class="right">
