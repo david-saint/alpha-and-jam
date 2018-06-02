@@ -89,4 +89,8 @@ export default {
 
   .bride img {height: 100%;}
   .bail img {height: 100%;}
+
+  @media only screen and (max-height: 500px) {
+    .logo { padding-top: 31px; padding-left: 41px; }
+  }
 </style>
