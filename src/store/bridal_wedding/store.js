@@ -4,7 +4,8 @@ import mutations from './mutations'
 
 export const bridalWedding = {
   state: {
-    image: ''
+    image: '',
+    wallImages: []
   },
   actions,
   getters,

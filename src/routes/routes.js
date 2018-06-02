@@ -1,6 +1,7 @@
 import RolexWatch from '../components/RolexWatch.vue'
 import GoalScored from '../components/GoalScored.vue'
 import GroupTable from '../components/GroupTable.vue'
+import BridalWall from '../components/BridalWall.vue'
 import JohnnieWalker from '../components/JohnnieWalker.vue'
 import BridalWedding from '../components/BridalWedding.vue'
 import GoalHighlights from '../components/GoalHighlights.vue'
@@ -61,5 +62,9 @@ export const routes = [
 	{
 		path: '/penalty',
 		component: PenaltyShootOut
+	},
+	{
+		path: '/wall',
+		component: BridalWall
 	}
 ]

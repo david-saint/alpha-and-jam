@@ -1,3 +1,4 @@
 export default {
-  brideImage: state => state.image 
+  brideImage: state => state.image,
+  wallImages: state => state.wallImages
 }
