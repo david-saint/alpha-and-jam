@@ -2,6 +2,7 @@ import RolexWatch from '../components/RolexWatch.vue'
 import GoalScored from '../components/GoalScored.vue'
 import GroupTable from '../components/GroupTable.vue'
 import BridalWall from '../components/BridalWall.vue'
+import TrafficPages from '../components/TrafficPages.vue'
 import JohnnieWalker from '../components/JohnnieWalker.vue'
 import BridalWedding from '../components/BridalWedding.vue'
 import GoalHighlights from '../components/GoalHighlights.vue'
@@ -66,5 +67,11 @@ export const routes = [
 	{
 		path: '/wall',
 		component: BridalWall
+	},
+	{
+		name: 'traffic',
+		path: '/traffic/:from/:to',
+		component: TrafficPages,
+		props: true
 	}
 ]
