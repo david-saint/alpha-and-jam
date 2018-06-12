@@ -2,27 +2,28 @@
   <div class="container">
     <div class="left" style="background-image: url(../assets/img/ikoyi.png);">
       <img src="../assets/img/ikoyi.png" alt="">
-      <span></span>
+      <span :style="{ backgroundColor: color }"></span>
     </div>
     <div class="right">
-      <div class="top">
+      <div class="top" :style="{ borderRightColor: color }">
         <div class="t">
-          <p>Osborne Lagos Nigeria</p>
-          <div class="candleLogo"><p>CANDLE</p></div>
+          <p>{{ origin }}</p>
+          <div class="candleLogo"><img src="../assets/img/candle.png" alt=""></div>
         </div>
         <div class="m">
-          <p><span style="color: #D93600;">"</span>The Traffic ahead seems to be excessive. Why not try a different route.<span style="color: #D93600;">"</span></p>
+          <p><span :style="{ color: color }">"</span>{{ text.main }}<span :style="{ color: color }">"</span></p>
         </div>
         <div class="b">
-          <p>Wherever you go, there are three icons that everyone knows: Jesus Christ, Messi and Coca-Cola.</p>
+          <p>{{ text.sub }}</p>
         </div>
       </div>
       <div class="bottom">
         <ul>
-          <li><i class="material-icons" style="color: #D93600;">directions_car</i> 10 mins</li>
-          <li><i class="material-icons" style="color: #D93600;">directions_railway</i> 20 mins</li>
-          <li><i class="material-icons" style="color: #D93600;">directions_walk</i> 50 mins</li>
+          <li><i class="material-icons" :style="{ color: color }">directions_car</i> {{ car }}</li>
+          <li><i class="material-icons" :style="{ color: color }">directions_railway</i> {{ train }}</li>
+          <li><i class="material-icons" :style="{ color: color }">directions_walk</i> {{ walk }}</li>
         </ul>
+        <div><p>Sponsored By:</p> <img src="../assets/img/rollie.png" alt=""></div>
       </div>
     </div>
   </div>
@@ -41,6 +42,34 @@
         lat: parseFloat(this.to.split(',')[1])
       }
       this.$store.dispatch('getTrafficStat', { origin, destination });
+    },
+    computed: {
+      origin() {
+        return this.$store.getters.trafficOrigin;
+      },
+      color() {
+        return this.$store.getters.trafficColor;
+      },
+      car() {
+        return this.$store.getters.trafficCar;
+      },
+      train() {
+        return this.$store.getters.trafficTrain;
+      },
+      walk() {
+        return this.$store.getters.trafficWalk
+      },
+      text() {
+        if (this.$store.getters.trafficColor == '#27AE60') {
+          return this.$store.getters.trafficGood[0]
+        }
+        if (this.$store.getters.trafficColor == '#F2C94C') {
+          return this.$store.getters.trafficMedium[0]
+        }
+        if (this.$store.getters.trafficColor == '#D93600') {
+          return this.$store.getters.trafficBad[0]
+        }
+      }
     }
   }
 </script>
@@ -75,7 +104,6 @@
     bottom: 0;
     width: 100%;
     height: 20px;
-    background-color: #D93600;
     z-index: 2;
   }
   .right {
@@ -103,17 +131,15 @@
 
         p {
           font-family: 'Montserrat';
-          font-weight: 300;
+          font-weight: bold;
           font-size: 48px;
           margin-bottom: 0;
         }
         .candleLogo {
           height: 120px;
-          width: 325px;
-          margin-right: -2px;
+          margin-right: -25px;
           text-align: center;
           vertical-align: middle;
-          background-color: #D93600;
 
           p {margin-top: 30px; color: white;}
         }
@@ -157,6 +183,63 @@
           font-size: 32px;
           margin-right: 10px;
           line-height: 0;
+        }
+      }
+    }
+
+    div {
+      width: 380px;
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 20px;
+
+      p {
+        font-size: 28px;
+        font-family: 'Poppins';
+        margin: 0;
+      }
+    }
+  }
+
+  @media only screen and (max-height: 500px) {
+    .right .bottom {
+      ul {
+        li {
+          font-size: 18px;
+          i.material-icons {
+            font-size: 16px;
+          }
+        }
+      }
+
+      div {
+        width: 200px;
+        p {
+          font-size: 14px;
+        }
+        img {
+          height: 40px;
+        }
+      }
+    }
+
+    .right {
+      .top {
+        .t {
+          p {font-size: 24px;}
+          .candleLogo {
+            img {height: 80px;}
+          }
+        }
+        .m {
+          p {
+            font-size: 36px;
+          }
+        }
+        .b {
+          p {font-size: 24px;}
         }
       }
     }
