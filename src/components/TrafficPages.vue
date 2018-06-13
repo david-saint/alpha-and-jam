@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="left" style="background-image: url(../assets/img/ikoyi.png);">
-      <img src="../assets/img/ikoyi.png" alt="">
+    <div class="left">
+      <img :src="require(`../assets/img/${image}.png`)" alt="">
       <span :style="{ backgroundColor: color }"></span>
     </div>
     <div class="right">
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+  import { goodRef, mediumRef, badRef } from '../firebase'
+
   export default {
     props: ['from', 'to'],
     created() {
@@ -42,6 +44,11 @@
         lat: parseFloat(this.to.split(',')[1])
       }
       this.$store.dispatch('getTrafficStat', { origin, destination });
+    },
+    firebase: {
+      goodTexts: goodRef,
+      mediumTexts: mediumRef,
+      badTexts: badRef
     },
     computed: {
       origin() {
@@ -61,14 +68,20 @@
       },
       text() {
         if (this.$store.getters.trafficColor == '#27AE60') {
-          return this.$store.getters.trafficGood[0]
+          let index = Math.floor(Math.random() * this.goodTexts.length);
+          return this.goodTexts[index] ? this.goodTexts[index] : { main: 'loading...', sub: 'loading...'};
         }
         if (this.$store.getters.trafficColor == '#F2C94C') {
-          return this.$store.getters.trafficMedium[0]
+          let index = Math.floor(Math.random() * this.mediumTexts.length);
+          return this.mediumTexts[index] ? this.mediumTexts[index] : { main: 'loading...', sub: 'loading...'};
         }
         if (this.$store.getters.trafficColor == '#D93600') {
-          return this.$store.getters.trafficBad[0]
+          let index = Math.floor(Math.random() * this.badTexts.length);
+          return this.badTexts[index] ? this.badTexts[index] : { main: 'loading...', sub: 'loading...'};
         }
+      },
+      image() {
+        return `${parseFloat(this.from.split(',')[0])}${parseFloat(this.from.split(',')[1])}`
       }
     }
   }

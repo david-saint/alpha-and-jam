@@ -11,6 +11,7 @@ import LiveCommentary from '../components/LiveCommentary.vue'
 import MatchPossession from '../components/MatchPossession.vue'
 import NaijaSupporters from '../components/NaijaSupporters.vue'
 import PenaltyShootOut from '../components/PenaltyShootOut.vue'
+import TrafficManagement from '../components/TrafficManagement.vue'
 
 export const routes = [
 	{
@@ -73,5 +74,9 @@ export const routes = [
 		path: '/traffic/:from/:to',
 		component: TrafficPages,
 		props: true
+	},
+	{
+		path: '/traffic/manage',
+		component: TrafficManagement
 	}
 ]

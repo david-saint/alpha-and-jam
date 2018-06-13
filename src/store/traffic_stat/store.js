@@ -4,7 +4,7 @@ import mutations from './mutations'
 
 export const TrafficStat = {
   state: {
-    color: '',
+    color: '#D93600',
     car: '',
     train: '',
     walk: '',
