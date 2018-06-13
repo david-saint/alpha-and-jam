@@ -10,3 +10,7 @@ const app = initializeApp({
 });
 
 export const db = app.database();
+
+export const goodRef = db.ref('good');
+export const mediumRef = db.ref('medium');
+export const badRef = db.ref('bad');
