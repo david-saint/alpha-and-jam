@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <div class="left">
-      <img :src="require(`../assets/img/${image}.png`)" alt="">
+    <div class="left" :style="{backgroundImage: `url(${require(`../assets/img/${image}.png`)})`}">
       <span :style="{ backgroundColor: color }"></span>
     </div>
     <div class="right">
@@ -14,7 +13,7 @@
           <p><span :style="{ color: color }">"</span>{{ text.main }}<span :style="{ color: color }">"</span></p>
         </div>
         <div class="b">
-          <p>{{ text.sub }}</p>
+          <p v-html="text.sub"></p>
         </div>
       </div>
       <div class="bottom">

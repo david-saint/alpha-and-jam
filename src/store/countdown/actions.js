@@ -69,7 +69,7 @@ export default {
 			let minutes = pad(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
 			let seconds = pad(Math.floor((distance % (1000 * 60)) / 1000));
 			// set the time in the element
-			let time = `${days}d ${hours}:${minutes}:${seconds}`;
+			let time = `${(days > 0) ? days + 'd' : ''} ${hours}:${minutes}:${seconds}`;
 			// If the countdown is finished, write some text
 			if (distance < 0) {
 				// cancel the loop

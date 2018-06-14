@@ -68,7 +68,7 @@
               <li v-for="badText of badTexts" :key="badText['.key']">
                 <ul v-if="!badText.edit">
                   <li>{{ badText.main }}</li>
-                  <li>{{ badText.sub }}</li>
+                  <li v-html="badText.sub"></li>
                   <li><span style="color: transparent;">|</span> <button @click="removeText(badText['.key'], 'bad')">Delete</button> <button @click="setEdit(badText['.key'], 'bad')">Edit</button></li>
                 </ul>
                 <ul v-else>
