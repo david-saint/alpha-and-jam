@@ -13,7 +13,7 @@
       <div class="container">
         <div class="crown">
           <img src="../assets/img/crown.png" class="country">
-          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/${firstTeam.id}.png`)})`}"></div>
+          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/15251.png`)})`}"></div>
         </div>
         <div class="grid-container">
           <div class="grid-item home">{{ firstTeam.score }}</div>
@@ -33,7 +33,7 @@
         </div>
         <div class="crown">
           <img src="../assets/img/crown.png" class="country">
-          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/${secondTeam.id}.png`)})`}"></div>
+          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/15251.png`)})`}"></div>
         </div>
       </div>
     </center>
@@ -78,7 +78,7 @@
         // get the time
         let time = goals.minute;
         // get the team id
-        let team = goals.id;
+        let team = goals.team_id;
         // redirect to the goal page
        window.location.href = `/goal/${score}/${assist}/${time}/${team}`;
       });
