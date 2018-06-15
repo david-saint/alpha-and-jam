@@ -24,6 +24,7 @@ export default {
 				// get the date
 				let matchDate = new Date(`${match.time.starting_at.date_time} ${match.time.starting_at.timezone}`)
 				// created an object of the needed variables
+				console.log(match);
 				const obj = {
 					matchday: match.round.data.name,
 					date_time: {
@@ -31,11 +32,13 @@ export default {
 						time: `${matchDate.getHours()}:${(matchDate.getMinutes() < 10) ? '0' + matchDate.getMinutes().toString() : matchDate.getMinutes().toString()}`
 					},
 					localTeam: {
+						id: match.localTeam.data.id,
 						name: match.localTeam.data.name,
 						shortName: match.localTeam.data.short_code,
 						flag: match.localTeam.data.logo_path
 					},
 					visitorTeam: {
+						id: match.visitorTeam.data.id,
 						name: match.visitorTeam.data.name,
 						shortName: match.visitorTeam.data.short_code,
 						flag: match.visitorTeam.data.logo_path

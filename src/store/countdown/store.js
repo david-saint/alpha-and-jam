@@ -12,11 +12,13 @@ export const countdown = {
 			time: ''
 		},
 		localTeam: {
+			id: '',
 			name: '',
 			shortName: '',
 			flag: ''
 		},
 		visitorTeam: {
+			id: '',
 			name: '',
 			shortName: '',
 			flag: ''
