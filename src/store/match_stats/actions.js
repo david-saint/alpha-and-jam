@@ -21,7 +21,6 @@ export default {
 					// get comments
 					axios.get(`https://soccer.sportmonks.com/api/v2.0/commentaries/fixture/${match.id}?api_token=${rootState.token}`)
 						.then(response => {
-							console.log(response);
 							commit('setMatchComment', { minute: response.data.data[0].minute, text: response.data.data[0].comment });
 						})
 						.catch(error => {console.error(error)});
@@ -53,6 +52,7 @@ export default {
 					match.goals.data.forEach(value => {
 						// push object into the dummy goals array
 						goals.push({
+							id: value.team_id,
 							score: value.player_name,
 							assist: value.player_assist_name,
 							minute: value.minute

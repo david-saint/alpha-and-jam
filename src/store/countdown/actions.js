@@ -24,7 +24,6 @@ export default {
 				// get the date
 				let matchDate = new Date(`${match.time.starting_at.date_time} ${match.time.starting_at.timezone}`)
 				// created an object of the needed variables
-				console.log(match);
 				const obj = {
 					matchday: match.round.data.name,
 					date_time: {

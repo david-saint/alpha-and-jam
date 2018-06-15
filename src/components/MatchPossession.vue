@@ -77,8 +77,10 @@
         let assist = goals.player_assist_name;
         // get the time
         let time = goals.minute;
+        // get the team id
+        let team = goals.id;
         // redirect to the goal page
-       window.location.href = `/goal/${score}/${assist}/${time}`;
+       window.location.href = `/goal/${score}/${assist}/${time}/${team}`;
       });
     },
 
