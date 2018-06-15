@@ -94,7 +94,7 @@ export default {
 				clearInterval(w);
 				// recursively call this function
 				getStat();
-			}, 30000);
+			}, 15000);
 		}
 		//  call the function
 		getStat();
