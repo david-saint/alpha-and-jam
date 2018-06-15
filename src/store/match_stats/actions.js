@@ -93,8 +93,8 @@ export default {
 				// clear the timer
 				clearInterval(w);
 				// recursively call this function
-				getStat();
-			}, 15000);
+				// getStat();
+			}, 30000);
 		}
 		//  call the function
 		getStat();
