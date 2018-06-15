@@ -130,7 +130,7 @@
   }
 
   .russia img {
-    width: 300px;
+    width: 550px;
   }
 
   .cocacola {
@@ -144,7 +144,7 @@
     position: relative;
   }
   .cocacola img {
-    width: 400px;
+    width: 650px;
   }
 
   .timebox {
