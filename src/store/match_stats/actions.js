@@ -62,7 +62,6 @@ export default {
 							bus.$emit('goal-scored', freshGoal);
 							// log it for me to view
 						}
-						console.log(freshGoal);
 						// change the time every second
 						w = setInterval(function () {
 							// if the second is 59 change it to 0/ else increment it
