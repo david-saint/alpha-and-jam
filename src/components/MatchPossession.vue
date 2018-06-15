@@ -11,8 +11,9 @@
 
     <center>
       <div class="container">
-        <div>
-          <img :src="firstTeam.logo" class="country">
+        <div class="crown">
+          <img src="../assets/img/crown.png" class="country">
+          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/${firstTeam.id}.png`)})`}"></div>
         </div>
         <div class="grid-container">
           <div class="grid-item home">{{ firstTeam.score }}</div>
@@ -30,8 +31,9 @@
             <strong class="possession">{{ secondTeam.possession }}%</strong>
           </div>
         </div>
-        <div>
-          <img :src="secondTeam.logo" class="country">
+        <div class="crown">
+          <img src="../assets/img/crown.png" class="country">
+          <div class="c" :style="{backgroundImage: `url(${require(`../assets/img/${secondTeam.id}.png`)})`}"></div>
         </div>
       </div>
     </center>
@@ -112,6 +114,19 @@
     padding: 25px;
   }
 
+  .crown .c {
+    position: absolute;
+    top: 38px;
+    left: 33px;
+    height: 276px;
+    width: 284px;
+    background-color: red;
+    border-radius: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .russia img {
     width: 300px;
   }
@@ -122,7 +137,10 @@
     right: 0;
     padding: 25px;
   }
-
+  .crown {
+    margin: 0 50px;
+    position: relative;
+  }
   .cocacola img {
     width: 400px;
   }
@@ -243,5 +261,10 @@
     .away { font-size: 65px; }
     .goal {height: 75px; width: 75px;}
     .possession { font-size: 40px; }
+    .russia img { height: 75px; }
+    .cocacola img { height: 75px; }
+    .container { top: -100px; }
+    .crown { margin: 0 25px; }
+    .crown .c { top: 16px; left: 16px; height: 138px; width: 138px; }
   }
 </style>
