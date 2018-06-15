@@ -18,11 +18,19 @@ export default {
 					if(!match) { commit('setMatchStatus', false); return; }
 					// if there is a world cup match return true
 					commit('setMatchStatus', true);
+					// get comments
+					axios.get(`https://soccer.sportmonks.com/api/v2.0/commentaries/fixture/${match.id}?api_token=${rootState.token}`)
+						.then(response => {
+							console.log(response);
+							commit('setMatchComment', { minute: response.data.data[0].minute, text: response.data.data[0].comment });
+						})
+						.catch(error => {console.error(error)});
 					// get the local and visiting teams
 					const localteam_id = match.localteam_id, visitorteam_id = match.visitorteam_id;
 					// set the requied details needed for the local team
 					const localTeam = {
 						id: localteam_id,
+						name: match.localTeam.data.name,
 						logo: match.localTeam.data.logo_path,
 						score: match.scores.localteam_score,
 						possession: match.stats.data.find(value => value.team_id === localteam_id).possessiontime
@@ -30,6 +38,7 @@ export default {
 					// set the requied details needed for the visitor team
 					const visitorTeam = {
 						id: visitorteam_id,
+						name: match.visitorTeam.data.name,
 						logo: match.visitorTeam.data.logo_path,
 						score: match.scores.visitorteam_score,
 						possession: match.stats.data.find(value => value.team_id === visitorteam_id).possessiontime

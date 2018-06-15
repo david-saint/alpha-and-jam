@@ -12,5 +12,7 @@ export default {
 	// get the match goal count (integer)
 	matchGoalsCount: state => state.goal.count,
 	// get the root states iteration length
-	indexTime: (state, getters, rootState) => rootState.time
+	indexTime: (state, getters, rootState) => rootState.time,
+	// get the match comment
+	matchComment: state => state.comment
 }

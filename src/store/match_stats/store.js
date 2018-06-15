@@ -7,12 +7,14 @@ export const matchStat = {
 		match: false,
 		first_team: {
 			id: '',
+			name: '',
 			logo: '',
 			score: '',
 			possession: ''
 		},
 		second_team: {
 			id: '',
+			name: '',
 			logo: '',
 			score: '',
 			possession: ''
@@ -24,6 +26,10 @@ export const matchStat = {
 		goal: {
 			count: 0,
 			goals: []
+		},
+		comment: {
+			minute: '',
+			text: ''
 		}
 	},
 	actions,

@@ -20,5 +20,9 @@ export default {
 	// set the count of the number of goals
 	setMatchGoalsCount(state, count) {
 		state.goal.count = count
+	},
+	// set the match comment
+	setMatchComment(state, comment) {
+		state.comment = comment;
 	}
 }
