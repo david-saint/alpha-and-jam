@@ -72,9 +72,9 @@
         // get the count of the goals
         let count = this.$store.getters.matchGoalsCount;
         // get the score 
-        let score = goals.player_name;
+        let score = goals.player_name ? goals.player_name : 'null';
         // get the assist
-        let assist = goals.player_assist_name;
+        let assist = goals.player_assist_name ? goals.player_assist_name : 'null';
         // get the time
         let time = goals.minute;
         // get the team id
