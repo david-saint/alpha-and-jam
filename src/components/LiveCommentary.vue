@@ -2,8 +2,14 @@
   <div class="container">
     <div class="left">
       <img src="../assets/img/left-bottle.png" height="100%">
-      <div class="image">
-        <img :src="require(`../assets/img/${firstTeam.id}.png`)" height="100%">
+      <div>
+        <svg class="svg" viewBox="0 0 413 335"  fill="#FFFFFF">
+          <clipPath id="clip-path">
+            <path d="M594.402 0H184.402L4.40259 0.5C-3.63624 130.944 0.626624 200.983 6.90202 325.5L184.402 332.5L369.402 334L593.402 326L594.402 273V225C594.952 199.616 596.865 168.384 596.402 143V69L594.402 0Z" transform="translate(-184.403 0.5)" fill="#C4C4C4"/>
+          </clipPath>
+          <!--<image clip-path="url(#clip-path)" :xlink:href="localTeam.flag"  :src="localTeam.flag" alt="Image" width="100%" class="svg__image" />-->
+          <image clip-path="url(#clip-path)" :xlink:href="require(`../assets/img/${firstTeam.id}.png`)"  :src="require(`../assets/img/${firstTeam.id}.png`)" alt="Image" class="svg__image" />
+        </svg>
       </div>
     </div>
     <div class="content">
@@ -32,8 +38,14 @@
     </div>
     <div class="right">
       <img src="../assets/img/right-bottle.png" height="100%">
-      <div class="image">
-        <img :src="require(`../assets/img/${secondTeam.id}.png`)" height="100%">
+      <div> 
+        <svg class="svg" viewBox="0 0 438 335"  fill="#FFFFFF">
+          <clipPath id="clip-path2">
+            <path d="M594.402 0H184.402L4.40259 0.5C-3.63624 130.944 0.626624 200.983 6.90202 325.5L184.402 332.5L369.402 334L593.402 326L594.402 273V225C594.952 199.616 596.865 168.384 596.402 143V69L594.402 0Z" transform="translate(596.474 0.5) scale(-1 1)" fill="#C4C4C4"/>
+          </clipPath>
+          <!--<image clip-path="url(#clip-path)" :xlink:href="localTeam.flag"  :src="localTeam.flag" alt="Image" width="100%" class="svg__image" />-->
+          <image clip-path="url(#clip-path2)" :xlink:href="require(`../assets/img/${secondTeam.id}.png`)"  :src="require(`../assets/img/${secondTeam.id}.png`)" alt="Image" class="svg__image" />
+        </svg>
       </div>
     </div>
   </div>
@@ -73,5 +85,5 @@
 </script>
 
 <style lang="scss">
-  @import '../sass/live_commentary.scss'
+@import '../sass/live_commentary.scss'
 </style>
