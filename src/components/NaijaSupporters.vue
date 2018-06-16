@@ -8,7 +8,7 @@
 			<div class="coke">
 				<p>Share <br> A Coke <br> with</p>
 				<img src="../assets/img/coke-bottle-copy.png" id="coke_bottle">
-				<p>bottle <br> of <br> coca cola</p>
+				<p>the <br> Super <br> Eagles</p>
 			</div>
 			<div class="cb" style="text-align: center;">
 				<img src="../assets/img/coke-flat.png" alt="" id="">
