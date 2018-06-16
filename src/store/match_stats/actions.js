@@ -73,10 +73,10 @@ export default {
 						}
 						// change the time every second
 						w = setInterval(function () {
+							// if the second is greater than 59 increment the minute
+							m = (s >= 59) ? (m + 1) : m;
 							// if the second is 59 change it to 0/ else increment it
 							s = (s >= 59) ? 0 : (s + 1);
-							// if the second is greater than 59 increment the minute
-							m = (s > 59) ? (m + 1) : m;
 							// save the new time
 							commit('setMatchTime', {minute: m, second: s});
 						}, 1000);
