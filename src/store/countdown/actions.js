@@ -50,7 +50,7 @@ export default {
 			})
 			.catch(error => console.error(error));
 	},
-	getCountdownTime({ commit }, matchDate) {
+	getCountdownTime({ commit, dispatch }, matchDate) {
 		// Set the date we are counting down to
 		const date = matchDate.getTime();
 		// Get the target element
@@ -77,7 +77,7 @@ export default {
 				// cancel the loop
 				clearInterval(x);
 				// set the time to display expired
-				time = 'EXPIRED';
+				dispatch('getCountdownInfo');
 			}
 			commit('setCountdownTime', time);
 		 }, 1000);
