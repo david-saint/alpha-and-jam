@@ -44,6 +44,9 @@
     <img src="../assets/img/rectangle.png" id="fscup">
     <img src="../assets/img/typo.png" id="fscont">
   </div>
+  <div class="info">
+    {{ width }} x {{ height }}
+  </div>
 </div>
 </template>
 
@@ -64,6 +67,12 @@
       },
       time() {
         return this.$store.getters.countdownTime;
+      },
+      width() {
+        return window.innerWidth;
+      },
+      height() {
+        return window.innerHeight;
       }
     },
     beforeCreate() {
@@ -90,6 +99,16 @@
     clip-path: url('../assets/img/vector.svg');
     overflow: hidden;
   }
+}
+.info {
+  position: absolute;
+  font-weight: 800;
+  height: 30px;
+  width: 100px;
+  color: black;
+  background-color: white;
+  bottom: 0;
+  right: 0;
 }
 #localTeam {
   left: -4px;
