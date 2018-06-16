@@ -42,9 +42,6 @@
     <img src="../assets/img/rectangle.png" id="fscup">
     <img src="../assets/img/typo.png" id="fscont">
   </div>
-  <div class="info">
-    {{ width }} x {{ height }}
-  </div>
 </div>
 </template>
 

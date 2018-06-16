@@ -16,12 +16,12 @@
 		</div>
 		<div class="left">
 			<div class="items">
-        <div v-for="image in leftImages" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
+        <div v-for="image in images.filter((value, index) => (index % 2) == 0)" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
 			</div>
 		</div>
 		<div class="right">
 			<div class="items">
-        <div v-for="image in rightImages" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
+        <div v-for="image in images.filter((value, index) => (index % 2) == 1)" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
 			</div>
 		</div>
 	</div>
@@ -32,31 +32,16 @@ export default {
   beforeCreate() {
     this.$store.dispatch('getSupportersImages');
   },
-  mounted() {},
   computed: {
-    leftImages() {
-      let a =  this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 0);
-      const getRandom = (array = a, n = 2) => {
+    images() {
+      const getRandom = (array = this.$store.getters.naijaImages, n = 4) => {
         const shuffled = array.sort(() => .5 - Math.random());// shuffle  
         return shuffled.slice(0,n); // return n unique elements
       }
       // repeat this recursively every 30 seconds
       setTimeout(function () {
         // recursively call this function
-        getRandom();
-      }, 10000);
-      return getRandom();
-    },
-    rightImages() {
-      let b =  this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 1);
-      const getRandom = (array = b, n = 2) => {
-        const shuffled = array.sort(() => .5 - Math.random());// shuffle  
-        return shuffled.slice(0,n); // return n unique elements
-      }
-      // repeat this recursively every 30 seconds
-      setTimeout(function () {
-        // recursively call this function
-        getRandom();
+         getRandom();
       }, 10000);
       return getRandom();
     }
