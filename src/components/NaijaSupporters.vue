@@ -6,7 +6,7 @@
 				<img src="../assets/img/typo.png" id="type">
 			</div>
 			<div class="coke">
-				<p>Rep <br> Naija <br> with a</p>
+				<p>Share <br> A Coke <br> with</p>
 				<img src="../assets/img/coke_bottle.png" id="coke_bottle">
 				<p>bottle <br> of <br> coca cola</p>
 			</div>
@@ -16,16 +16,12 @@
 		</div>
 		<div class="left">
 			<div class="items">
-				<ul>
-					<li v-for="image in leftImages"><img :src="image" alt="" class="ig_images"></li>
-				</ul>
+        <div v-for="image in leftImages" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
 			</div>
 		</div>
 		<div class="right">
 			<div class="items">
-				<ul>
-					<li v-for="image in rightImages"><img :src="image" alt="" class="ig_images"></li>
-				</ul>
+        <div v-for="image in rightImages" :style="{backgroundImage: `url(${image})`}" alt="" class="ig_images"></div>
 			</div>
 		</div>
 	</div>
@@ -39,10 +35,30 @@ export default {
   mounted() {},
   computed: {
     leftImages() {
-      return this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 0);
+      let a =  this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 0);
+      const getRandom = (array = a, n = 2) => {
+        const shuffled = array.sort(() => .5 - Math.random());// shuffle  
+        return shuffled.slice(0,n); // return n unique elements
+      }
+      // repeat this recursively every 30 seconds
+      setTimeout(function () {
+        // recursively call this function
+        getRandom();
+      }, 10000);
+      return getRandom();
     },
     rightImages() {
-      return this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 1);
+      let b =  this.$store.getters.naijaImages.filter((value, index) => (index % 2) == 1);
+      const getRandom = (array = b, n = 2) => {
+        const shuffled = array.sort(() => .5 - Math.random());// shuffle  
+        return shuffled.slice(0,n); // return n unique elements
+      }
+      // repeat this recursively every 30 seconds
+      setTimeout(function () {
+        // recursively call this function
+        getRandom();
+      }, 10000);
+      return getRandom();
     }
   }
 }

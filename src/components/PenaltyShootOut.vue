@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <img src="../assets/img/left-bottle.png" height="100%">
+      <img src="../assets/img/left_bottle.png" height="100%">
       <svg class="svg" viewBox="0 0 183 118" fill="#FFFFFF">
         <clipPath id="clip-path">
           <path d="M505.665 2.5L180.165 0L4.66553 4.5C-1.35787 181.604 -1.20848 280.898 3.16546 458C111.964 463.027 173.332 464.513 283.665 464H402.665L500.165 460.5L588.665 456.5L591.665 299V135L587.165 5.5L505.665 2.5Z" transform="translate(-180.166 0.5)" fill="#C4C4C4"/>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="right">
-      <img src="../assets/img/right-bottle.png" height="100%">
+      <img src="../assets/img/right_bottle.png" height="100%">
       <div class="image">
         <img src="../assets/img/18562.png" height="100%">
       </div>

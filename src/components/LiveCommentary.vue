@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <img src="../assets/img/left-bottle.png" height="100%">
+      <img src="../assets/img/left_bottle.png" height="100%">
       <div>
         <svg class="svg" viewBox="0 0 413 335"  fill="#FFFFFF">
           <clipPath id="clip-path">
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="right">
-      <img src="../assets/img/right-bottle.png" height="100%">
+      <img src="../assets/img/right_bottle.png" height="100%">
       <div> 
         <svg class="svg" viewBox="0 0 438 335"  fill="#FFFFFF">
           <clipPath id="clip-path2">
