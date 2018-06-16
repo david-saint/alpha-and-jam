@@ -23,6 +23,9 @@ export default {
         .catch(error => {
           console.log(error)
         });
+        setTimeout(function () {
+          getImages();
+        }, 30000);
     }
     getImages();
   }
