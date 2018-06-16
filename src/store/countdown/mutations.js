@@ -12,6 +12,7 @@ export default {
 		state.visitorTeam.shortName = object.visitorTeam.shortName;
 		state.visitorTeam.flag = object.visitorTeam.flag;
 		state.visitorTeam.id = object.visitorTeam.id;
+		state.stadium = object.stadium;
 	},
 	// set the countdown time
 	setCountdownTime(state, time) {

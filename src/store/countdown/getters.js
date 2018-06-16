@@ -9,4 +9,6 @@ export default {
 	countdownLocalTeam: state => state.localTeam,
 	// the countdown visitor team info
 	countdownVisitorTeam: state => state.visitorTeam,
+	// the countdown stadium
+	countdownStadium: state => state.stadium,
 }

@@ -34,7 +34,7 @@
          <p>{{ visitorTeam.name }}</p>
        </div>
        <p class="ms-details">
-        {{ dateTime.time }} | {{ dateTime.date }} | Olimpiyskiy stadion Luzhniki
+        {{ dateTime.time }} | {{ dateTime.date }} | {{ stadium }}
       </p>
     </div>
   </div>
@@ -62,6 +62,9 @@
       },
       time() {
         return this.$store.getters.countdownTime;
+      },
+      stadium() {
+        return this.$store.getters.countdownStadium;
       },
       width() {
         return window.innerWidth;
