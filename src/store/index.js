@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
 		google: 'AIzaSyAyc5n1BQTKa1FV58sbF0MfmAxzSJJ-1jY',
 		season_id: 892, // World-cup: 892
 		time: 1450000,
-    coke_token: '1104208046.a5a7f83.86773a3a3e9a4c119d65e274dacc76e5', // instagram token for naija supporters ot_dave
+    coke_token: '7530451271.a5a7f83.961f3fe88e2545e29f6e0f9ca7c7218f', // instagram token for naija supporters ot_dave
     brides_token: '7530451271.a5a7f83.961f3fe88e2545e29f6e0f9ca7c7218f' // instagram token for bridal candle.ng
 	},
 	modules: {
