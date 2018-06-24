@@ -48,10 +48,10 @@
 
 <script>
 	export default {
-    props: ['score', 'assist', 'time', 'team'],
+    props: ['score', 'assist', 'time', 'team', 'origin'],
     mounted() {
       setTimeout(() => {
-        window.location.href = '/possession'// or naija-supporters
+        window.location.href = `/${this.origin}` // or naija-supporters
       }, 20000);
     }
   }

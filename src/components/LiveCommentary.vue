@@ -60,6 +60,25 @@
     beforeCreate() {
       this.$store.dispatch('getMatchStat');
     },
+
+    mounted() {
+      // listen for the goal-scored event
+      bus.$on('goal-scored', (goals) => {
+        // get the count of the goals
+        let count = this.$store.getters.matchGoalsCount;
+        // get the score 
+        let score = goals.player_name ? goals.player_name : 'null';
+        // get the assist
+        let assist = goals.player_assist_name ? goals.player_assist_name : 'null';
+        // get the time
+        let time = goals.minute;
+        // get the team id
+        let team = goals.team_id;
+        // redirect to the goal page
+       window.location.href = `/goal/${score}/${assist}/${time}/${team}/commentary`;
+      });
+    },
+
     computed: {
       firstTeam() {
         return this.$store.getters.matchFirstTeam

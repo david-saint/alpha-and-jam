@@ -33,7 +33,7 @@ export const routes = [
 	},
 	{
 		name: 'goal',
-		path: '/goal/:score/:assist/:time/:team',
+		path: '/goal/:score/:assist/:time/:team/:origin',
 		component: GoalScored,
 		props: true
 	},

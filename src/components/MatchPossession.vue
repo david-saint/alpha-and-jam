@@ -80,7 +80,7 @@
         // get the team id
         let team = goals.team_id;
         // redirect to the goal page
-       window.location.href = `/goal/${score}/${assist}/${time}/${team}`;
+       window.location.href = `/goal/${score}/${assist}/${time}/${team}/possession`;
       });
     },
 
