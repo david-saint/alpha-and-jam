@@ -3,7 +3,7 @@ export default {
     function getTrafficData() {
       // build the url structure
       // https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${origin.long},${origin.lat}&destinations=${destination.long},${destination.lat}&key=${rootState.google}
-      const url = `http://alphaandjamnigeria.com/madison/?originLong=${origin.long}&originLat=${origin.lat}&destinationLong=${destination.long}&destinationLat=${destination.lat}`;
+      const url = `https://remembrance-lumberjack-69271.herokuapp.com/?originLong=${origin.long}&originLat=${origin.lat}&destinationLong=${destination.long}&destinationLat=${destination.lat}`;
       // call the endpoint
       axios.get(url)
         .then(response => {
