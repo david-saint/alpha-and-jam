@@ -5,24 +5,24 @@
     <div class="search-form">
       <div>
         <label for="originLongitude">Origin Longitude</label>
-        <input type="text" id="originLongitude">
+        <input type="text" id="originLongitude" v-model="originLongitude">
       </div>
       <div>
         <label for="originLatitude">Origin Latitude</label>
-        <input type="text" id="originLatitude">
+        <input type="text" id="originLatitude" v-model="originLatitude">
       </div>
       <div>
         <label for="destinationLongitude">Destination Longitude</label>
-        <input type="text" id="destinationLongitude">
+        <input type="text" id="destinationLongitude" v-model="destinationLongitude">
       </div>
       <div>
         <label for="destinationLatitude">Destination Latitude</label>
-        <input type="text" id="destinationLatitude">
+        <input type="text" id="destinationLatitude" v-model="destinationLatitude">
       </div>
-      <button>Search</button>
+      <button @click="filter()">Search</button>
     </div>
 
-    <div id="wrapper">
+    <div id="wrapper" v-if="search !== ''">
       <ul>
         <li>
           <input type="checkbox" checked>
@@ -30,7 +30,7 @@
           <h2>Good Traffic Messages</h2>
           <p>
             <ol>
-              <li v-for="goodText of goodTexts" :key="goodText['.key']">
+              <li v-for="goodText of goodTexts.filter(value => value.route == search)" :key="goodText['.key']">
                 <ul v-if="!goodText.edit">
                   <li>{{ goodText.main }}</li>
                   <li>{{ goodText.sub }}</li>
@@ -58,7 +58,7 @@
           <h2>Medium Traffic Messages</h2>
           <p>
             <ol>
-              <li v-for="mediumText of mediumTexts" :key="mediumText['.key']">
+              <li v-for="mediumText of mediumTexts.filter(value => value.route == search)" :key="mediumText['.key']">
                 <ul v-if="!mediumText.edit">
                   <li>{{ mediumText.main }}</li>
                   <li>{{ mediumText.sub }}</li>
@@ -86,7 +86,7 @@
           <h2>Bad Traffic Messages</h2>
           <p>
             <ol>
-              <li v-for="badText of badTexts" :key="badText['.key']">
+              <li v-for="badText of badTexts.filter(value => value.route == search)" :key="badText['.key']">
                 <ul v-if="!badText.edit">
                   <li>{{ badText.main }}</li>
                   <li v-html="badText.sub"></li>
@@ -110,11 +110,41 @@
         </li>
       </ul>
     </div>
+    <div class="container" v-else> 
+      <h1>Add New Route</h1>
+      <div>
+        <label for="newOlong">Origin Longitude</label>
+        <input type="text" id="newOlong" v-model="newForm.origin.longitude">
+      </div>
+      <div>
+        <label for="newOlat">Origin Latitude</label>
+        <input type="text" id="newOlat" v-model="newForm.origin.latitude">
+      </div>
+      <div>
+        <label for="newDlong">Destination Longitude</label>
+        <input type="text" id="newDlong" v-model="newForm.destination.longitude">
+      </div>
+      <div>
+        <label for="newDlat">Destination Latitude</label>
+        <input type="text" id="newDlat" v-model="newForm.destination.latitude">
+      </div>
+      <div>
+        <label for="newRN">Route Name</label>
+        <input type="text" name="" id="newRN" placeholder="e.g. Osborne to 3rd Mainland" v-model="newForm.name">
+      </div>
+      <button @click="submitRoute()">Add</button>
+    </div>
+    <div class="container">
+      <h1>Route List</h1>
+      <ul>
+        <li v-for="route in route"><a href="#" @click="makeR(route)">{{ route.name }}</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-  import { goodRef, mediumRef, badRef } from '../firebase'
+  import { goodRef, mediumRef, badRef, routesRef } from '../firebase'
 
   export default {
     data() {
@@ -126,28 +156,60 @@
         badMainText: '',
         badSubText: '',
         originLongitude: '',
+        originLatitude: '',
+        destinationLongitude: '',
+        destinationLatitude: '',
+        search: '',
+        newForm: {
+          origin: {
+            longitude: '',
+            latitude: '',
+          },
+          destination: {
+            longitude: '',
+            latitude: '',
+          },
+          name: ''
+        }
       }
     },
     firebase: {
       goodTexts: goodRef,
       mediumTexts: mediumRef,
-      badTexts: badRef
+      badTexts: badRef,
+      route: routesRef
     },
     methods: {
       submitGood() {
         if (this.goodMainText !== '' && this.goodSubText !== '')
-          goodRef.push({ main: this.goodMainText, sub: this.goodSubText, edit: false });
+          goodRef.push({ main: this.goodMainText, sub: this.goodSubText, edit: false, route: this.search });
         this.goodMainText = this.goodSubText = ''
       },
       submitMedium() {
         if (this.mediumMainText !== '' && this.mediumSubText !== '')
-          mediumRef.push({ main: this.mediumMainText, sub: this.mediumSubText, edit: false });
+          mediumRef.push({ main: this.mediumMainText, sub: this.mediumSubText, edit: false, route: this.search });
         this.mediumMainText = this.mediumSubText = ''
       },
       submitBad() {
         if (this.badMainText !== '' && this.badSubText !== '')
-          badRef.push({ main: this.badMainText, sub: this.badSubText, edit: false });
+          badRef.push({ main: this.badMainText, sub: this.badSubText, edit: false, route: this.search });
         this.badMainText = this.badSubText = ''
+      },
+      submitRoute() {
+        if (this.newForm.origin.longitude !== '' && this.newForm.origin.lattitude !== '' && this.newForm.destination.longitude !== '' && this.newForm.destination.latitude !== '' && this.newForm.name !== '')
+          routesRef.push(this.newForm);
+        this.search = `${this.newForm.origin.longitude}-${this.newForm.origin.latitude}|${this.newForm.destination.longitude}-${this.newForm.destination.latitude}`;
+        this.newForm = {
+          origin: {
+            longitude: '',
+            latitude: '',
+          },
+          destination: {
+            longitude: '',
+            latitude: '',
+          },
+          name: ''
+        };
       },
       removeText(key, type) {
         if (type === 'good')
@@ -181,6 +243,19 @@
           mediumRef.child(key).set({ main: obj.main, sub: obj.sub, edit: false });
         if (type === 'bad')
           badRef.child(key).set({ main: obj.main, sub: obj.sub, edit: false });
+      },
+      filter() {
+        let count = this.route.filter(value => ( value.origin.longitude == this.originLongitude &&
+                                    value.origin.latitude == this.originLatitude &&
+                                    value.destination.longitude == this.destinationLongitude &&
+                                    value.destination.latitude == this.destinationLatitude)).length;
+        if (count)
+          this.search = `${this.originLongitude}-${this.originLatitude}|${this.destinationLongitude}-${this.destinationLatitude}`;
+        else
+          this.search = '';
+      },
+      makeR(r) {
+        this.search = `${r.origin.longitude}-${r.origin.latitude}|${r.destination.longitude}-${r.destination.latitude}`;
       }
     }
   }
@@ -197,6 +272,22 @@
     padding: 25px 0;
     color: #222122;
   }
+}
+.container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  font-weight: 500;
+  color: #000;
+
+  div {
+    margin:10px;
+    input {
+      width: 50%;
+      padding: 5px;
+    }
+  }  
 }
 
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);

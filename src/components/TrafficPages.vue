@@ -33,6 +33,11 @@
 
   export default {
     props: ['from', 'to'],
+    data() {
+      return {
+        searchRoute: ''
+      }
+    },
     created() {
       const origin = {
         long: parseFloat(this.from.split(',')[0]),
@@ -42,6 +47,7 @@
         long: parseFloat(this.to.split(',')[0]),
         lat: parseFloat(this.to.split(',')[1])
       }
+      this.searchRoute = `${origin.long}-${origin.lat}|${destination.long}-${destination.lat}`;
       this.$store.dispatch('getTrafficStat', { origin, destination });
     },
     firebase: {
@@ -74,16 +80,19 @@
       },
       text() {
         if (this.$store.getters.trafficColor == '#27AE60') {
-          let index = Math.floor(Math.random() * this.goodTexts.length);
-          return this.goodTexts[index] ? this.goodTexts[index] : { main: 'loading...', sub: 'loading...'};
+          let gt = this.goodTexts.filter(value => value.route == this.searchRoute);
+          let index = Math.floor(Math.random() * gt.length);
+          return gt[index] ? gt[index] : { main: 'loading...', sub: 'loading...'};
         }
         if (this.$store.getters.trafficColor == '#F2C94C') {
-          let index = Math.floor(Math.random() * this.mediumTexts.length);
-          return this.mediumTexts[index] ? this.mediumTexts[index] : { main: 'loading...', sub: 'loading...'};
+          let mt = this.mediumTexts.filter(value => value.route == this.searchRoute);
+          let index = Math.floor(Math.random() * mt.length);
+          return mt[index] ? mt[index] : { main: 'loading...', sub: 'loading...'};
         }
         if (this.$store.getters.trafficColor == '#D93600') {
-          let index = Math.floor(Math.random() * this.badTexts.length);
-          return this.badTexts[index] ? this.badTexts[index] : { main: 'loading...', sub: 'loading...'};
+          let bt = this.badTexts.filter(value => value.route == this.searchRoute);
+          let index = Math.floor(Math.random() * bt.length);
+          return bt[index] ? bt[index] : { main: 'loading...', sub: 'loading...'};
         }
       },
       image() {
