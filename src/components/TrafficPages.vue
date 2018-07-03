@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="left" :style="{backgroundImage: `url(${require(`../assets/img/${image}.png`)})`}">
-      <span :style="{ backgroundColor: color }"> Osborne to 3rd Mainland</span>
+      <span :style="{ backgroundColor: color }">{{ routeName.name }}</span>
     </div>
     <div class="right">
       <div class="top" :style="{ borderRightColor: color }">
         <div class="t">
           <p>{{ origin }}</p>
-          <div class="candleLogo"><img src="../assets/img/candle.png" alt=""></div>
+          <div class="candleLogo"><img src="../assets/img/cand.png" alt=""></div>
         </div>
         <div class="m">
           <p><span :style="{ color: color }">"</span>{{ text.main }}<span :style="{ color: color }">"</span></p>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import { goodRef, mediumRef, badRef } from '../firebase'
+  import { goodRef, mediumRef, badRef, routesRef } from '../firebase'
 
   export default {
     props: ['from', 'to'],
@@ -47,9 +47,16 @@
     firebase: {
       goodTexts: goodRef,
       mediumTexts: mediumRef,
-      badTexts: badRef
+      badTexts: badRef,
+      route: routesRef
     },
     computed: {
+      routeName() {
+        return this.route.find(value => ( value.origin.longitude == parseFloat(this.from.split(',')[0]) &&
+                                          value.origin.latitude == parseFloat(this.from.split(',')[1]) &&
+                                          value.destination.longitude == parseFloat(this.to.split(',')[0]) &&
+                                          value.destination.latitude == parseFloat(this.to.split(',')[1]) ));
+      },
       origin() {
         return this.$store.getters.trafficOrigin;
       },

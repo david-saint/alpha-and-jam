@@ -1,6 +1,27 @@
 <template>
   <div>
     <h1>Manage Traffic Messages</h1>
+
+    <div class="search-form">
+      <div>
+        <label for="originLongitude">Origin Longitude</label>
+        <input type="text" id="originLongitude">
+      </div>
+      <div>
+        <label for="originLatitude">Origin Latitude</label>
+        <input type="text" id="originLatitude">
+      </div>
+      <div>
+        <label for="destinationLongitude">Destination Longitude</label>
+        <input type="text" id="destinationLongitude">
+      </div>
+      <div>
+        <label for="destinationLatitude">Destination Latitude</label>
+        <input type="text" id="destinationLatitude">
+      </div>
+      <button>Search</button>
+    </div>
+
     <div id="wrapper">
       <ul>
         <li>
@@ -103,7 +124,8 @@
         mediumMainText: '',
         mediumSubText: '',
         badMainText: '',
-        badSubText: ''
+        badSubText: '',
+        originLongitude: '',
       }
     },
     firebase: {
@@ -165,6 +187,18 @@
 </script>
 
 <style lang="scss">
+.search-form {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+  div {
+    display: inline-block;
+    padding: 25px 0;
+    color: #222122;
+  }
+}
+
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 $white: #FFFFFF;
 $grayLighter : #eee;
