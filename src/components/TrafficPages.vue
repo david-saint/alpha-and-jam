@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left" :style="{backgroundImage: `url(${require(`../assets/img/${image}.png`)})`}">
-      <span :style="{ backgroundColor: color }"></span>
+      <span :style="{ backgroundColor: color }"> Osborne to 3rd Mainland</span>
     </div>
     <div class="right">
       <div class="top" :style="{ borderRightColor: color }">
@@ -115,8 +115,14 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 20px;
     z-index: 2;
+    font-size: 32px;
+    color: white;
+    display: block;
+    padding: 20px 0;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
   }
   .right {
     width: 70%;
@@ -149,9 +155,9 @@
         }
         .candleLogo {
           height: 120px;
-          margin-right: -25px;
           text-align: center;
           vertical-align: middle;
+          padding: 30px;
 
           p {margin-top: 30px; color: white;}
         }
@@ -216,6 +222,10 @@
   }
 
   @media only screen and (max-height: 500px) {
+    .left span {
+      font-size: 16px;
+      padding: 10px 0;
+    }
     .right .bottom {
       ul {
         li {
@@ -242,7 +252,7 @@
         .t {
           p {font-size: 24px;}
           .candleLogo {
-            img {height: 80px;}
+            img {height: 50px; padding: 0px;}
           }
         }
         .m {
