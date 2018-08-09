@@ -19,8 +19,6 @@
       <div class="bottom">
         <ul>
           <li><i class="material-icons" :style="{ color: color }">directions_car</i> {{ car }}</li>
-          <li><i class="material-icons" :style="{ color: color }">directions_railway</i> {{ train }}</li>
-          <li><i class="material-icons" :style="{ color: color }">directions_walk</i> {{ walk }}</li>
         </ul>
         <div><p>Sponsored By:</p> <img src="../assets/img/rollie.png" alt=""></div>
       </div>
