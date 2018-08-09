@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="left" :style="{backgroundImage: `url(${require(`../assets/img/${image}.png`)})`}">
+    <div class="left" :style="{backgroundImage: `url(${routeName.image})`}">
       <span :style="{ backgroundColor: color }">{{ routeName.name }}</span>
     </div>
     <div class="right">

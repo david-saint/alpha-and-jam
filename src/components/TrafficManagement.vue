@@ -109,7 +109,9 @@
           </p>
         </li>
       </ul>
+
     </div>
+
     <div class="container" v-else> 
       <h1>Add New Route</h1>
       <div>
@@ -132,8 +134,13 @@
         <label for="newRN">Route Name</label>
         <input type="text" name="" id="newRN" placeholder="e.g. Osborne to 3rd Mainland" v-model="newForm.name">
       </div>
+      <div>
+        <label for="newRI">Route Image</label>
+        <input type="text" id="newRI" placeholder="https://alphaandjam/madison/photos/osborne-to-ikoyi.png" v-model="newForm.image">
+      </div>
       <button @click="submitRoute()">Add</button>
     </div>
+
     <div class="container">
       <h1>Route List</h1>
       <ul>
@@ -169,7 +176,8 @@
             longitude: '',
             latitude: '',
           },
-          name: ''
+          name: '',
+          image: '',
         }
       }
     },
@@ -208,7 +216,8 @@
             longitude: '',
             latitude: '',
           },
-          name: ''
+          name: '',
+          image: ''
         };
       },
       removeText(key, type) {
