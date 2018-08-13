@@ -2,6 +2,7 @@ import RolexWatch from '../components/RolexWatch.vue'
 import GoalScored from '../components/GoalScored.vue'
 import GroupTable from '../components/GroupTable.vue'
 import BridalWall from '../components/BridalWall.vue'
+import CandleTime from '../components/CandleTime.vue'
 import TrafficPages from '../components/TrafficPages.vue'
 import JohnnieWalker from '../components/JohnnieWalker.vue'
 import BridalWedding from '../components/BridalWedding.vue'
@@ -78,5 +79,9 @@ export const routes = [
 	{
 		path: '/traffic/manage',
 		component: TrafficManagement
+	},
+	{
+		path: '/time',
+		component: CandleTime
 	}
 ]

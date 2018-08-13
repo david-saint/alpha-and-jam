@@ -23,6 +23,12 @@
     </div>
 
     <div id="wrapper" v-if="search !== ''">
+      <h1>Active Route</h1>
+      <br>
+      <br>
+      <div>{{ route.find(value => value.id == search).name }}: <a :href="`https://www.torussiawithcoke.ml/traffic/${route.find(value => value.id == search).origin.longitude},${route.find(value => value.id == search).origin.latitude}/${route.find(value => value.id == search).destination.longitude},${route.find(value => value.id == search).destination.latitude}/`">{{ `https://www.torussiawithcoke.ml/traffic/${route.find(value => value.id == search).origin.longitude},${route.find(value => value.id == search).origin.latitude}/${route.find(value => value.id == search).destination.longitude},${route.find(value => value.id == search).destination.latitude}/` }}</a></div>
+      <br>
+      <br>
       <ul>
         <li>
           <input type="checkbox" checked>
@@ -178,6 +184,7 @@
           },
           name: '',
           image: '',
+          id: '',
         }
       }
     },
@@ -204,9 +211,11 @@
         this.badMainText = this.badSubText = ''
       },
       submitRoute() {
-        if (this.newForm.origin.longitude !== '' && this.newForm.origin.lattitude !== '' && this.newForm.destination.longitude !== '' && this.newForm.destination.latitude !== '' && this.newForm.name !== '')
+        if (this.newForm.origin.longitude !== '' && this.newForm.origin.lattitude !== '' && this.newForm.destination.longitude !== '' && this.newForm.destination.latitude !== '' && this.newForm.name !== ''){
+          this.search = `${this.newForm.origin.longitude}-${this.newForm.origin.latitude}|${this.newForm.destination.longitude}-${this.newForm.destination.latitude}`;
+          this.newForm.id = this.search;
           routesRef.push(this.newForm);
-        this.search = `${this.newForm.origin.longitude}-${this.newForm.origin.latitude}|${this.newForm.destination.longitude}-${this.newForm.destination.latitude}`;
+        }
         this.newForm = {
           origin: {
             longitude: '',
@@ -217,7 +226,7 @@
             latitude: '',
           },
           name: '',
-          image: ''
+          image: '',
         };
       },
       removeText(key, type) {
