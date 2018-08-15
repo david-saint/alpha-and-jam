@@ -50,7 +50,7 @@
           // get the minute
           let minutes = (date.getMinutes() < 10) ? '0'+date.getMinutes() : date.getMinutes();
           // get the section
-          let sections = (date.getHours() > 12) ? 'pm' : 'am';
+          let sections = (date.getHours() > 11) ? 'pm' : 'am';
           // update the data
           this.time = { hour: hours, minute: minutes, section: sections };
           // update the day
