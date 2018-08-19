@@ -122,8 +122,8 @@
         margin: 20px 0;
       }
     }
-    #blink {transition: all 1s ease; opacity: 1;}
-    .hide {opacity: 0 !important;}
+    #blink {transition: all 1s ease-in-out; opacity: 1;}
+    .hide {opacity: 0.05 !important;}
     .date {
       padding: 20px;
       display: flex;
