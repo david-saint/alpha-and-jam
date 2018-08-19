@@ -5,7 +5,7 @@
     </div>
 
     <div class="time">
-      <h1>{{ time.hour }}<span>{{ time.minute }}</span><span class="tiny">{{ time.section }}</span></h1>
+      <h1>{{ time.hour }}<span><span id="blink">:</span> {{ time.minute }}</span><span class="tiny">{{ time.section }}</span></h1>
       <p>{{ date.day }}</p>
     </div>
 
@@ -55,6 +55,8 @@
           this.time = { hour: hours, minute: minutes, section: sections };
           // update the day
           this.date = { day: days[date.getDay()], value: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}` };
+          // blink the blinker every second
+          document.getElementById('blink').classList.toggle('hide');
         }, 1000);
       }
     }
@@ -120,7 +122,8 @@
         margin: 20px 0;
       }
     }
-
+    #blink {transition: all 1s ease; opacity: 1;}
+    .hide {opacity: 0 !important;}
     .date {
       padding: 20px;
       display: flex;
