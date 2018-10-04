@@ -1,6 +1,6 @@
-importScripts('/cache-polyfill.js');
+importScripts('./cache-polyfill.js');
 
-var VERSION = '1.0.0.0.11'; // the version of the site
+var VERSION = '1.0.0.0.13'; // the version of the site
 var CACHENAME = 'TRWC' + VERSION; // the name of the cache
 
 // URLs to cache
@@ -50,4 +50,10 @@ self.addEventListener('fetch', function (event) {
         return response || fetch(event.request); // return the cache or the response
       })
   );
+});
+
+self.addEventListener('message', function(event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });

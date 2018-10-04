@@ -256,11 +256,11 @@
       saveEdit(obj, type) {
         const key = obj['.key'];
         if (type === 'good')
-          goodRef.child(key).set({ main: obj.main, sub: obj.sub, edit: false });
+          goodRef.child(key).update({ main: obj.main, sub: obj.sub, edit: false });
         if (type === 'medium')
-          mediumRef.child(key).set({ main: obj.main, sub: obj.sub, edit: false });
+          mediumRef.child(key).update({ main: obj.main, sub: obj.sub, edit: false });
         if (type === 'bad')
-          badRef.child(key).set({ main: obj.main, sub: obj.sub, edit: false });
+          badRef.child(key).update({ main: obj.main, sub: obj.sub, edit: false });
       },
       filter() {
         let count = this.route.filter(value => ( value.origin.longitude == this.originLongitude &&

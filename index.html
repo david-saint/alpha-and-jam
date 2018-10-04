@@ -16,7 +16,33 @@
         window.addEventListener('load', function () {
           navigator.serviceWorker
             .register('./sw.js')
-            .then(registration => console.log('Service Worker registered with scope', registration.scope));
+            .then(function (registration) {
+              if (!navigator.serviceWorker.controller) {
+                return;
+              }
+
+              if (registration.waiting) {
+                registration.waiting.postMessage({action: 'skipWaiting'});
+                return;
+              }
+
+              if (registration.installing) {
+                registration.installing.addEventListener('statechange', function() {
+                  if (registration.installing.state == 'installed') {
+                    registration.waiting.postMessage({action: 'skipWaiting'});
+                  }
+                });
+                return;
+              }
+
+              registration.addEventListener('updatefound', function() {
+                 registration.installing.addEventListener('statechange', function() {
+                  if (registration.installing.state == 'installed') {
+                    registration.waiting.postMessage({action: 'skipWaiting'});
+                  }
+                });
+              });
+            });
         });
       }
     </script>
